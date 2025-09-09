@@ -92,3 +92,48 @@ section {
 #contacts {
     background-color: aliceblue;
 }
+
+#cards {
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+@keyframes fly-up {
+    0% {width: 20vw; height: 25vh;}
+    25% {width: 25vw; height: 35vh;}
+    50% {width: 27vw; height: 37vh;}
+    75% {width: 29vw; height: 39vh;}
+    100% {width: 30vw; height: 40vh;}
+}
+
+.card {
+    background-color: blueviolet;
+    color: aliceblue;
+    padding: 20px;
+    width: 20vw;
+    margin: 10px;
+    transition: 0.5s;
+}
+
+.card:hover {
+    background-color: rgb(161, 89, 230);
+    animation: fly-up 0.5s;
+}
+
+#card-button {
+    padding: 10px;
+    border-radius: 5px;
+    border-color: black;
+    background-color: aliceblue;
+    color: black;
+    cursor: pointer;
+}
+
+#card-button:hover {
+    background-color: rgb(179, 179, 179);
+}
+
+#card-button:active {
+    background-color: black;
+    color: aliceblue;
+}
