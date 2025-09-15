@@ -69,19 +69,19 @@ section p {
 }
 
 #home {
-
+    max-width: 90vw;
 }
 
 #news {
-
+    max-width: 90vw;
 }
 
 #about {
-
+    max-width: 90vw;
 }
 
 #contacts {
-
+    max-width: 90vw;
 }
 
 /*--aside-section--*/
