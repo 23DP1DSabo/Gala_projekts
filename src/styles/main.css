@@ -3,6 +3,7 @@ body {
     font-family: Bahnschrift;
 }
 
+/*--header-section--*/
 a {
     color: aliceblue;
     font-size: 18px;
@@ -40,6 +41,7 @@ a:hover {
     margin-right: auto;
 }
 
+/*--regular-sections--*/
 section h1 {
     font-size: 40px;
     top: 20px;
@@ -56,15 +58,33 @@ section p {
     padding-right: auto;
 }
 
-section {
+.regular-section {
     min-height: 60vh;
     margin: 0px 20px 10px 20px;
     flex-direction: column;
     display: flex;
     justify-content: center;
     text-align: center;
+    background-color: aliceblue;
 }
 
+#home {
+
+}
+
+#news {
+
+}
+
+#about {
+
+}
+
+#contacts {
+
+}
+
+/*--aside-section--*/
 #aside-section {
     background-color: darkcyan;
     width: 20vw;
@@ -77,22 +97,7 @@ section {
     text-align: center;
 }
 
-#home {
-    background-color: aliceblue;
-}
-
-#news {
-    background-color: aliceblue;
-}
-
-#about {
-    background-color: aliceblue;
-}
-
-#contacts {
-    background-color: aliceblue;
-}
-
+/*--cards-and-animations--*/
 #cards {
     display: grid;
     grid-template-columns: auto auto auto;
@@ -100,9 +105,25 @@ section {
 
 @keyframes fly-up {
     0% {width: 20vw; height: 25vh;}
+    5% {width: 21vw; height: 27vh;}
+    10% {width: 22vw; height: 29vh;}
+    15% {width: 23vw; height: 31vh;}
+    20% {width: 24vw; height: 33vh;}
     25% {width: 25vw; height: 35vh;}
+    30% {width: 25.4vw; height: 35.4vh;}
+    35% {width: 25.8vw; height: 35.8vh;}
+    40% {width: 26.2vw; height: 36.2vh;}
+    45% {width: 26.6vw; height: 36.6vh;}
     50% {width: 27vw; height: 37vh;}
+    55% {width: 27.4vw; height: 37.4vh;}
+    60% {width: 27.8vw; height: 37.8vh;}
+    65% {width: 28.2vw; height: 38.2vh;}
+    70% {width: 28.6vw; height: 38.6vh;}
     75% {width: 29vw; height: 39vh;}
+    80% {width: 29.2vw; height: 39.2vh;}
+    85% {width: 29.4vw; height: 39.4vh;}
+    90% {width: 29.6vw; height: 39.6vh;}
+    95% {width: 29.8vw; height: 39.8vh;}
     100% {width: 30vw; height: 40vh;}
 }
 
@@ -113,11 +134,12 @@ section {
     width: 20vw;
     margin: 10px;
     transition: 0.5s;
+
 }
 
 .card:hover {
     background-color: rgb(161, 89, 230);
-    animation: fly-up 0.5s;
+    animation: fly-up  0.5s;
 }
 
 #card-button {
@@ -136,4 +158,17 @@ section {
 #card-button:active {
     background-color: black;
     color: aliceblue;
+    padding: 12px;
+    border-color: aliceblue;
+}
+
+
+/*--footer-section--*/
+#footer-section {
+    background-color: black;
+    color: aliceblue;
+    width: 100vw;
+    padding: 5px;
+    right: 0;
+    left: 0;
 }
