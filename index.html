@@ -9,12 +9,12 @@
 </head>
 <body>
 
-    <!---------------header--------------->
+<!---------------header--------------->
     <header id="header">
         <h1 id="logo">&lt;logo&gt;</h1>
         <nav id="navigation">
             <a href="#home" class="nav-button">Home</a>
-            <!-------------dropdown------------->
+<!-------------dropdown------------->
             <div class="dropdown">
                 <button class="nav-button">Sadaļas</button>
                 <div class="dropdown-content">
@@ -23,30 +23,39 @@
                   <a href="maksla.html" class="dropdowned-button">māksla</a>
                 </div>
             </div>
-            <!-------------dropdown-end------------->
+<!-------------dropdown-end------------->
             <a href="#about" class="nav-button">Par mums</a>
             <a href="#contacts" class="nav-button">Kontakti</a>
             <a href="#cards" class="nav-button">Idejas</a> 
             <a href="#forum" class="nav-button">Forums</a>
+<!-------------dropdown------------->
+            <div class="dropdown">
+                <button class="nav-button">Izskats</button>
+                <div class="dropdown-content">
+                    <a href='#' onclick="lightMode()" class="dropdowned-button">Gaišs</a>
+                    <a href='#' onclick="darkMode()" class="dropdowned-button">Tumšs</a>
+                </div>
+            </div>
+<!-------------dropdown-end------------->
         </nav>
     </header>
 
 
     <main>
-        <!-------------homepage------------->
+<!-------------homepage------------->
         <section id="home" class="regular-section">
             <h1>Projekts</h1>
             <h3>Daniels Šabovičs</h3>
             <p>lorem ipsum.</p>
         </section>
 
-        <!-------------aside-section------------->
+<!-------------aside-section------------->
         <aside id="aside-section" class="regular-section">
             <h1>aside section</h1>
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
         </aside>
 
-        <!-------------regular-sections------------->
+<!-------------regular-sections------------->
         <section id="sadalas" class="regular-section">
             <h1></h1>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi et nulla, assumenda quo sapiente laborum minima, quasi maxime temporibus explicabo neque culpa aliquid voluptatem eligendi alias pariatur quas molestias veniam.</p>
@@ -62,7 +71,7 @@
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam, quas. Voluptates dicta dignissimos officia exercitationem quae tempora esse laboriosam quo? Vero ducimus deleniti ipsa vel earum dolorem eligendi suscipit quos.</p>
         </section>
 
-        <!-------------cards------------->
+<!-------------cards------------->
         <section id="cards" class="regular-section">
             <div class="card">
                 <h1>Title 1</h1>
@@ -70,19 +79,21 @@
             </div>
             <div class="card">
                 <h1>Title 2</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae illum ipsa sunt maiores iste quibusdam non, provident, voluptas beatae, voluptatibus enim rerum deserunt.</p>
             </div>
             <div class="card">
                 <h1>Title 3</h1>
+                <button id="card-button">Button</button>
             </div>
             <div class="card">
                 <h1>Title 4</h1>
-
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
             </div>
             </div>
         </section>
     </main>
 
-    <!-------------footer------------->
+<!-------------footer------------->
     <footer id="footer-section">
         <p>Copyright © 2025 DSabovics - All Rights Reserved.</p>
     </footer>
