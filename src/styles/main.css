@@ -27,6 +27,9 @@ html, body {
     border-color: rgb(255, 255, 255);
     cursor: pointer;
     font-family: VCR_OSD;
+    min-width:fit-content;
+    width: 10vw;
+    margin: 5px;
 }
 
 .nav-button:hover {
@@ -41,9 +44,9 @@ a:hover {
     background-color: rgb(0, 0, 0);
     left: 0;
     right: 0;
-    display: grid;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     color: rgb(255, 255, 255);
     max-width: 100vw;
     margin: 10px;
@@ -65,6 +68,7 @@ a:hover {
 .nav-button:active {
         background-color: #525252;
 }
+
 
 /*------------------dropdown-menu-(content)--------*/
 .dropdown {
@@ -122,7 +126,7 @@ section p {
 }
 
 .regular-section {
-    min-height: 60vh;
+    min-height: 85vh;
     margin: 0px 20px 10px 20px;
     flex-direction: column;
     display: flex;
@@ -168,7 +172,7 @@ section p {
 #aside-section {
     background-color: rgb(0, 0, 0);
     width: 20vw;
-    min-height: 60vh;
+    min-height: 85vh;
     height: auto;
     float: right;
     display: flex;
@@ -187,7 +191,7 @@ section p {
 /*------------------cards-and-animations------------------*/
 #cards {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .card {
@@ -201,6 +205,7 @@ section p {
     border-width: 3px;
     border-radius: 8px;
     border-color: rgb(255, 255, 255);
+    box-sizing: border-box;
 }
 
 .card:hover {
@@ -267,31 +272,10 @@ section p {
 .light-mode {
     background-color: #ffffff;
     color: #000000;
-    border-color: #ffffff;
+    border-color: #000000;
 }
 
 .light-mode .regular-section {
-    background: 
-    linear-gradient(
-        to right,
-        transparent 38px,
-        #303030 38px,
-        transparent 41px
-    ),
-    repeating-linear-gradient(
-        to bottom,
-        #303030 0px,
-        #303030 23.5px,
-        #303030 25px
-    );
-
-    border: #fff 2px solid;
-    border-bottom: #fff 2px solid;
-    border-radius: 20px;
-    margin-bottom: 10px;
-}
-
-.light-mode  {
-    background-color: rgb(24, 197, 255);
-    color: #000;
+    border: #fff 3px solid;
+    border-radius: 8px;
 }
