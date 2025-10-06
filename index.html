@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projekts</title>
+    <title>TaskForge</title>
     <link rel="stylesheet" type="text/css" href="src/styles/main.css">
     <link rel="icon" type="image/x-icon" href=""> 
 </head>
@@ -11,6 +11,19 @@
 
 <!---------------header--------------->
     <header id="header">
+        <div id="top-header">
+            <button id="latvian-lang" class="langauge-buttons">LV</button>
+            <button id="english-lang" class="langauge-buttons">EN</button>
+            <button id="italian-lang" class="langauge-buttons">IT</button>
+            <div class="dropdown-top">
+                <button class="nav-button-top">Izskats</button>
+                <div class="dropdown-content-top">
+                    <a href='#' onclick="lightMode()" class="dropdowned-button-top">Gaišs</a>
+                    <a href='#' onclick="darkMode()" class="dropdowned-button-top">Tumšs</a>
+                </div>
+            </div>
+        </div>
+        <div id="bottom-header">
         <h1 id="logo">&lt;logo&gt;</h1>
         <nav id="navigation">
             <a href="#home" class="nav-button">Home</a>
@@ -28,25 +41,16 @@
             <a href="#contacts" class="nav-button">Kontakti</a>
             <a href="#cards" class="nav-button">Idejas</a> 
             <a href="#forum" class="nav-button">Forums</a>
-<!-------------dropdown------------->
-            <div class="dropdown">
-                <button class="nav-button">Izskats</button>
-                <div class="dropdown-content">
-                    <a href='#' onclick="lightMode()" class="dropdowned-button">Gaišs</a>
-                    <a href='#' onclick="darkMode()" class="dropdowned-button">Tumšs</a>
-                </div>
-            </div>
-<!-------------dropdown-end------------->
         </nav>
+        </div>
     </header>
-
 
     <main>
 <!-------------homepage------------->
         <section id="home" class="regular-section">
-            <h1>Virsraksts1</h1>
-            <h3>Virsraksts3</h3>
-            <p>Papildteksts</p>
+            <h1>TaskForge</h1>
+            <h3></h3>
+            <p></p>
         </section>
 
 <!-------------aside-section------------->
