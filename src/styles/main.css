@@ -64,6 +64,8 @@ html, body {
     cursor: pointer;
 }
 
+.dropdown-top:hover .dropdown-content-top {display: flex;}
+
 .dropdown-content-top {
     display: none;
     flex-direction: column;
@@ -71,14 +73,21 @@ html, body {
     top: 100%;
     min-width: 100%;
     background-color: #000000;
-    border-radius: 8px;
     overflow: hidden;
     z-index: 1000;
-    outline: 3px solid #fff;
+    gap: 3px;
 }
 
 .dropdowned-button-top {
+    color: #000000;
+    background-color: #ffffff;
+    text-decoration: none;
+    padding: 5px 8px 5px 8px;
+}
 
+.dropdowned-button-top:hover {
+    background-color: #000000;
+    color: #ffffff;
 }
 
 /*------------------header-section------------------*/
@@ -178,7 +187,7 @@ a:hover {
 }
 
 .dropdown:hover .dropdown-content {display: flex;}
-.dropdowned-button:hover {background-color: #3b3b3b;}
+.dropdowned-button:hover {background-color: #ffffff; color: #000000;}
 .dropdowned-button:active {background-color: #525252;}
 
 .dropbtn:hover {
@@ -310,9 +319,9 @@ section p {
 
 #card-button:active {
     background-color: rgb(75, 75, 75);
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     padding: 12px;
-    border-color: rgb(255, 255, 255);
+    border-color: rgb(0, 0, 0);
 }
 
 
@@ -358,6 +367,9 @@ section p {
 }
 
 .light-mode .regular-section {
-    border: #fff 3px solid;
+    border: #000000 3px solid;
     border-radius: 8px;
+    background-color: #fff;
+    color: #000000;
 }
+
