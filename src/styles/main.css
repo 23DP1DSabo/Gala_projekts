@@ -3,8 +3,9 @@ body {
     font-family: VCR_OSD, monospace;
 }
 
-html, body {
+html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 @font-face {
@@ -12,9 +13,14 @@ html, body {
   src: url(../files/VCR_OSD_MONO_1.001.ttf) format("truetype");
 }
 
+* {
+    box-sizing: border-box;
+}
+
 /*------------------top-header------------------*/
 #top-header {
     display: flex;
+    position: fixed;
     justify-content: flex-end;
     align-items: center;
     background-color: rgb(0, 0, 0);
@@ -72,7 +78,7 @@ html, body {
     position: absolute;
     top: 100%;
     min-width: 100%;
-    background-color: #000000;
+    background-color: #ffffff;
     overflow: hidden;
     z-index: 1000;
     gap: 3px;
@@ -119,8 +125,8 @@ html, body {
     color: #000000;
 }
 
-a:hover {
-    background-color: rgb(0, 0, 0);
+.nav-button:active {
+    background-color: #525252;
 }
 
 #header {
@@ -152,10 +158,6 @@ a:hover {
     align-items: center;
     justify-content: right;
     margin-right: 1%;
-}
-
-.nav-button:active {
-        background-color: #525252;
 }
 
 
@@ -302,7 +304,7 @@ section p {
     z-index: 2;
 }
 
-#card-button {
+.card-button {
     padding: 10px 20px 10px 20px;
     border-radius: 5px;
     border-color: rgb(255, 255, 255);
@@ -312,12 +314,12 @@ section p {
     font-family: VCR_OSD;
 }
 
-#card-button:hover {
+.card-button:hover {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
 }
 
-#card-button:active {
+.card-button:active {
     background-color: rgb(75, 75, 75);
     color: rgb(0, 0, 0);
     padding: 12px;
@@ -359,17 +361,100 @@ section p {
     };
 }
 
-/*------------------themes------------------*/
+/*------------------light-theme------------------*/
 .light-mode {
     background-color: #ffffff;
     color: #000000;
     border-color: #000000;
 }
 
-.light-mode .regular-section {
+#header.light-mode {
+
+}
+
+.langauge-buttons.light-mode {
+
+}
+
+.langauge-buttons:hover.light-mode {
+
+}
+
+.langauge-buttons:active.light-mode {
+
+}
+
+#header-top.light-mode {
+
+}
+
+.dropdown-top.light-mode {
+
+}
+
+.nav-button-top.light-mode {
+
+}
+
+.nav-button-top:hover.light-mode {
+
+}
+
+.dropdown-content-top.light-mode {
+
+}
+
+.dropdowned-button-top.light-mode {
+
+}
+
+#bottom-header.light-mode {
+
+}
+
+#navigation.light-mode {
+
+}
+
+.nav-button.light-mode {
+
+}
+
+.nav-button:hover.light-mode {
+
+}
+
+.nav-button:active.light-mode {
+
+}
+
+.dropdown.light-mode {
+
+}
+
+.dropdown-content {
+
+}
+
+.dropdowned-button.light-mode {
+
+}
+
+.regular-section.light-mode {
     border: #000000 3px solid;
     border-radius: 8px;
     background-color: #fff;
     color: #000000;
 }
 
+#cards.light-mode {
+
+}
+
+.card-button.light-mode {
+
+}
+
+#footer-section.light-mode {
+
+}
