@@ -186,6 +186,7 @@ html {
     color: #fff;
     text-decoration: none;
     padding: 8px;
+    background-color: #000000;
 }
 
 .dropdown:hover .dropdown-content {display: flex;}
@@ -369,75 +370,79 @@ section p {
 }
 
 #header.light-mode {
-
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .langauge-buttons.light-mode {
-
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
 }
 
 .langauge-buttons:hover.light-mode {
-
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
 }
 
-.langauge-buttons:active.light-mode {
-
-}
-
-#header-top.light-mode {
-
-}
-
-.dropdown-top.light-mode {
-
+#top-header.light-mode {
+    background-color: #fff;
 }
 
 .nav-button-top.light-mode {
-
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .nav-button-top:hover.light-mode {
-
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
 .dropdown-content-top.light-mode {
-
+    background-color: rgb(0, 0, 0);
 }
 
 .dropdowned-button-top.light-mode {
-
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
 }
 
-#bottom-header.light-mode {
-
-}
-
-#navigation.light-mode {
-
+.dropdowned-button-top:hover.light-mode {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
 .nav-button.light-mode {
-
+    background-color: #ffffff;
+    color: #000000;
 }
 
 .nav-button:hover.light-mode {
-
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .nav-button:active.light-mode {
-
-}
-
-.dropdown.light-mode {
-
+    background-color: #525252;
 }
 
 .dropdown-content {
-
+    background-color: #ffffff;
+    outline: 3px solid #000000;
 }
 
 .dropdowned-button.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
 
+.dropdowned-button:hover.light-mode {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.dropdowned-button:active.light-mode {
+    background-color: #525252;
 }
 
 .regular-section.light-mode {
@@ -447,14 +452,24 @@ section p {
     color: #000000;
 }
 
-#cards.light-mode {
-
+.card-button.light-mode {
+    border-color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
 }
 
-.card-button.light-mode {
+.card-button:hover.light-mode {
+    border-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
 
+.card-button:active.light-mode {
+    background-color: rgb(75, 75, 75);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
 }
 
 #footer-section.light-mode {
-
+    background-color: #000000;
 }
