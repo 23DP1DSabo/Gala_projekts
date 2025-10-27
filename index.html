@@ -18,8 +18,8 @@
             <div class="dropdown-top">
                 <button class="nav-button-top">Izskats</button>
                 <div class="dropdown-content-top">
-                    <a href='#' onclick="lightMode()" class="dropdowned-button-top">Gaišs</a>
-                    <a href='#' onclick="darkMode()" class="dropdowned-button-top">Tumšs</a>
+                    <a href='#' onclick="lightMode(); return false;" class="dropdowned-button-top">Gaišs</a>
+                    <a href='#' onclick="darkMode(); return false;" class="dropdowned-button-top">Tumšs</a>
                 </div>
             </div>
         </div>
@@ -41,6 +41,23 @@
             <a href="#contacts" class="nav-button">Kontakti</a>
             <a href="#cards" class="nav-button">Idejas</a> 
             <a href="#forum" class="nav-button">Forums</a>
+            <button class="log-in-button">Log in</button>
+            <button class="sign-in-button">Sign in</button>
+            <div class="log-in-window">
+                <h1>Log in the site to continue</h1>
+                <p>Input your email address and password.</p>
+                <form class="input"></form>
+                <form class="input"></form>
+            </div>
+
+            <div class="sign-in-window">
+                <h1>Sign in the site to continue</h1>
+                <p>Input all of the necessary data</p>
+                <form class="input"></form>
+                <form class="input"></form>
+                <form class="input"></form>
+                <form class="input"></form>
+            </div>
         </nav>
         </div>
     </header>
