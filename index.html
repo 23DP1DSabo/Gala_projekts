@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TaskForge</title>
     <link rel="stylesheet" type="text/css" href="src/styles/main.css">
-    <link rel="icon" type="image/x-icon" href=""> 
+    <link rel="stylesheet" type="text/css" href="src/styles/themes.css">
+    <link rel="stylesheet" type="text/css" href="src/styles/responsivity.css">
+    <link rel="icon" type="image/x-icon" href="src/images/icon.ico"> 
 </head>
 <body>
 
@@ -31,18 +33,19 @@
             <div class="dropdown">
                 <button class="nav-button">Sadaļas</button>
                 <div class="dropdown-content">
-                  <a href="sports.html" class="dropdowned-button">sports</a>
-                  <a href="kulinarija.html" class="dropdowned-button">kulinārija</a>
-                  <a href="maksla.html" class="dropdowned-button">māksla</a>
+                  <a href="interactive_tools/pomodoro.html" class="dropdowned-button">Pomodoro pulkstenis</a>
+                  <a href="interactive_tools/planotajs.html" class="dropdowned-button">Mērķu plānotājs</a>
+                  <a href="interactive_tools/eisenhower.html" class="dropdowned-button">Eizenhauera matrica</a>
+                  <a href="interactive_tools/calendar.html" class="dropdowned-button">Uzdevumu kalendārs</a>
                 </div>
             </div>
 <!-------------dropdown-end------------->
-            <a href="#about" class="nav-button">Par mums</a>
-            <a href="#contacts" class="nav-button">Kontakti</a>
-            <a href="#cards" class="nav-button">Idejas</a> 
-            <a href="#forum" class="nav-button">Forums</a>
-            <button class="log-in-button">Log in</button>
-            <button class="sign-in-button">Sign in</button>
+            <a href="basic info/about_us.html" class="nav-button">Par mums</a>
+            <a href="basic info/contacts.html" class="nav-button">Kontakti</a>
+            <a href="basic info/forum.html" class="nav-button">Forums</a>
+            <a href="" class="nav-button" id="profile-button">Profils</a> 
+            <button id="log-in-button">Pieslēgties</button>
+            <button id="sign-in-button">Pierakstīties</button>
             <div class="log-in-window">
                 <h1>Pieslēdzieties lai turpinātu lapā</h1>
                 <p>Ievadiet sava konta e-pasta adresi un paroli.</p>
@@ -51,7 +54,7 @@
             </div>
 
             <div class="sign-in-window">
-                <h1>Pieslēdzieties lai turpinātu lapā</h1>
+                <h1>Pierakstieties lai turpinātu lapā</h1>
                 <p>Ievadiet visus nepieciešamos datus.</p>
                 <input class="input" id="varda-ievade">
                 <input class="input" id="uzvarda-ievade">
@@ -71,15 +74,14 @@
 
 <!-------------aside-section------------->
         <aside id="aside-section" class="regular-section">
-            <p>Prokrastinācija - Darbu vai veicamo uzdevumu atlikšana uz vēlāku laiku, kas var izraisīties perfekcionisma, emociju prioritātes, izpildes nespējas vai citu iemeslu dēļ. </p>
+            <p>Produktivitāte - </p>
         </aside>
 
 <!-------------regular-sections------------->
         <section id="sadalas" class="regular-section">
-            <p>Šī tīmekļa vietne ir taisīta, lai palīdzētu cilvēkiem pārvarēt prokrastināciju un sākt iepriekš atliktos darbus. Neatkarīgi no tā, vai tas ir personīgs mērķis, radošs projekts vai ikdienas pienākums, platforma nodrošina funkcionalitāti, vadlīnijas un motivāciju, lai atvieglotu darbu sākšanu vai turpināšanu, sadalot uzdevumus pārvaldāmos soļos, izsekojot progresu un piedāvājot personalizētu attieksmi. </p>
-            <p>"Never put off until tomorrow what you can do the day after tomorrow." 
-- Marks Tvens</p>
-        </section>
+            <p> </p>
+            <p> </p>
+        </section> 
 
         <section id="about" class="regular-section">
             <h1>Par mums</h1>
@@ -88,31 +90,27 @@
 
 <!-------------cards------------->
         <section id="cards" class="regular-section">
-            <div class="card">
-                <h1>Ideja #1</h1>
-                <button class="card-button">Button</button>
+            <div class="card" id="pomodoro-card">
+                <h1>Pomodoro pulkstenis</h1>
+                <button class="card-button" href="interactive_tools/pomodoro.html">Pāriet</button>
             </div>
-            <div class="card">
-                <h1>Ideja #2</h1>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae illum ipsa sunt maiores iste quibusdam non, provident, voluptas beatae, voluptatibus enim rerum deserunt.</p>
+            <div class="card" id="task-card">
+                <h1>Mērķu plānotājs</h1>
+                <button class="card-button" href="interactive_tools/planotajs.html">Pāriet</button>
             </div>
-            <div class="card">
-                <h1>Ideja #3</h1>
-                <button class="card-button">Button</button>
+            <div class="card" id="eisenhower-card">
+                <h1>Eizenhauera matrica</h1>
+                <button class="card-button" href="interactive_tools/eisenhower.html">Pāriet</button>
             </div>
-            <div class="card">
-                <h1>Ideja #4</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+            <div class="card" id="calendar-card">
+                <h1>Uzdevumu ķēdes kalendārs</h1>
+                <button class="card-button" href="interactive_tools/calendar.html">Pāriet</button>
             </div>
         </section>
     </main>
 
 <!-------------regular-sections-(more)------------->
-    <section id="contacts" class="regular-section">
-        <h1>Kontakti</h1>
-        <p>E-pasts: A230158ds@RVT.lv</p>
-        <p>Tālrunis: 12 345 678</p>
-    </section>
+
 
 <!-------------footer------------->
     <footer id="footer-section">
