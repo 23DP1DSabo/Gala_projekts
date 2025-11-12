@@ -189,9 +189,15 @@ html {
     background-color: #000000;
 }
 
-.dropdown:hover .dropdown-content {display: flex;}
-.dropdowned-button:hover {background-color: #ffffff; color: #000000;}
-.dropdowned-button:active {background-color: #525252;}
+.dropdown:hover .dropdown-content {
+    display: flex;
+}
+.dropdowned-button:hover {
+    background-color: #ffffff; color: #000000;
+}
+.dropdowned-button:active {
+    background-color: #525252;
+}
 
 .dropbtn:hover {
     background-color: #ffffff;
@@ -199,10 +205,6 @@ html {
     border-color: #fff;
     color: #000000;
 }
-
-/*------------------log-in-window------------------*/
-
-/*------------------sign-in-window------------------*/
 
 /*------------------regular-sections------------------*/
 section h1 {
@@ -343,12 +345,28 @@ section p {
     text-align: center;
 }
 
+#pomodoro-card {
+    background-color: red;
+}
+
+#task-card {
+    background-color: white;
+}
+
+#eisenhower-card {
+    background-color: green;
+}
+
+#calendar-card {
+    background-color: rgb(236, 183, 114);
+}
+
 /*------------------responsivity------------------*/
 @media (max-width: 800px) {
 
     #navigation {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    }
+    };
 
     #logo {
         max-height: 15vh;
@@ -363,117 +381,5 @@ section p {
     .regular-section h1 {
         padding-top: 70px;
         margin-top: -70px;
-    };
-}
-
-/*------------------light-theme------------------*/
-body.light-mode {
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #000000;
-}
-
-body.light-mode #header {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-
-body.light-mode .langauge-buttons {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-}
-
-body.light-mode .langauge-buttons:hover {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-}
-
-body.light-mode #top-header {
-    background-color: #fff;
-}
-
-body.light-mode .nav-button-top {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-
-body.light-mode .nav-button-top:hover {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-body.light-mode .dropdown-content-top {
-    background-color: rgb(0, 0, 0);
-}
-
-body.light-mode .dropdowned-button-top {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-body.light-mode .dropdowned-button-top:hover {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-
-body.light-mode .nav-button {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.light-mode .nav-button:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-body.light-mode .nav-button:active {
-    background-color: #525252;
-}
-
-body.light-mode .dropdown-content {
-    background-color: #ffffff;
-    outline: 3px solid #000000;
-}
-
-body.light-mode .dropdowned-button {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-body.light-mode .dropdowned-button:hover {
-    background-color: #000000;
-    color: #ffffff;
-}
-
-body.light-mode .dropdowned-button:active {
-    background-color: #525252;
-}
-
-body.light-mode .regular-section {
-    border: #000000 3px solid;
-    border-radius: 8px;
-    background-color: #fff;
-    color: #000000;
-}
-
-body.light-mode .card-button {
-    border-color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
-}
-
-body.light-mode .card-button:hover {
-    border-color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
-}
-
-body.light-mode .card-button:active {
-    background-color: rgb(75, 75, 75);
-    color: rgb(255, 255, 255);
-    border-color: rgb(255, 255, 255);
-}
-
-body.light-mode #footer-section {
-    background-color: #000000;
+    }
 }
