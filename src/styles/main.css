@@ -8,6 +8,11 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 @font-face {
   font-family: VCR_OSD;
   src: url(../files/VCR_OSD_MONO_1.001.ttf) format("truetype");
@@ -20,7 +25,8 @@ html {
 /*------------------top-header------------------*/
 #top-header {
     display: flex;
-    position: fixed;
+    /* keep top-header inside the header flow so header offsetHeight includes it */
+    position: relative;
     justify-content: flex-end;
     align-items: center;
     background-color: rgb(0, 0, 0);
@@ -133,11 +139,14 @@ html {
     background-color: rgb(0, 0, 0);
     left: 0;
     right: 0;
+    top: 0;
     display: flex;
     flex-direction: column;
     color: rgb(255, 255, 255);
     max-width: 100vw;
-    margin: 10px;
+    margin: 0px, 10px, 10px, 10px;
+    position: fixed;
+    z-index: 1000;
 }
 
 #bottom-header {
@@ -240,6 +249,11 @@ section p {
     border-width: 3px;
     border-radius: 8px;
     border-color: rgb(255, 255, 255);
+    margin-top: var(--top-header);
+}
+
+@media (max-width: 600px) {
+    :root {--header-height: 60px;}
 }
 
 #sadalas {
@@ -333,24 +347,13 @@ section p {
     border-color: rgb(0, 0, 0);
 }
 
-
-/*------------------footer-section------------------*/
-#footer-section {
-    background-color: black;
-    color: rgb(255, 255, 255);
-    width: 100vw;
-    padding: 5px;
-    right: 0;
-    left: 0;
-    text-align: center;
-}
-
 #pomodoro-card {
     background-color: red;
 }
 
 #task-card {
     background-color: white;
+    color: black;
 }
 
 #eisenhower-card {
@@ -359,7 +362,153 @@ section p {
 
 #calendar-card {
     background-color: rgb(236, 183, 114);
+    color: black;
 }
+
+
+/*------------------footer-section------------------*/
+#footer-section {
+    background-color: black;
+    color: rgb(255, 255, 255);
+    width: 100vw;
+    padding: 20px 5px;
+    right: 0;
+    left: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+#footer-info {
+    order: -1;
+}
+
+#footer-info p {
+    margin: 10px 0;
+}
+
+.social-media {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-media a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.social-media a:hover {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+}
+
+
+/*------------------feedback-form------------------*/
+#feedback-form-container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+#feedback-form-container h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: rgb(255, 255, 255);
+    align-items: center;
+}
+
+#feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#feedback-form input, #feedback-form textarea {
+    padding: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-family: VCR_OSD, monospace;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+#feedback-form input::placeholder, #feedback-form textarea::placeholder {
+    color: rgb(150, 150, 150);
+}
+
+#feedback-form input:focus, #feedback-form textarea:focus {
+    outline: none;
+    border-color: rgb(138, 138, 138);
+    background-color: rgb(40, 40, 40);
+}
+
+.feedback-submit-button {
+    padding: 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-submit-button:hover {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+.feedback-submit-button:active {
+    background-color: rgb(100, 100, 100);
+}
+
+#feedback-message-display {
+    margin-top: 10px;
+    min-height: 20px;
+    font-size: 14px;
+}
+
+#footer-info {
+    flex: 1;
+    min-width: 200px;
+}
+
+#footer-info p {
+    margin: 10px 0;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.error-message {
+    color: rgb(255, 100, 100);
+    font-size: 12px;
+    min-height: 16px;
+    display: block;
+}
+
+input.input-error, textarea.input-error {
+    border-color: rgb(255, 100, 100) !important;
+    background-color: rgba(255, 0, 0, 0.1) !important;
+}
+
+
 
 /*------------------responsivity------------------*/
 @media (max-width: 800px) {

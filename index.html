@@ -7,18 +7,19 @@
     <link rel="stylesheet" type="text/css" href="src/styles/main.css">
     <link rel="stylesheet" type="text/css" href="src/styles/themes.css">
     <link rel="stylesheet" type="text/css" href="src/styles/responsivity.css">
-    <link rel="icon" type="image/x-icon" href="src/images/icon.ico"> 
+    <!-- inline SVG favicon to avoid missing file error -->
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23000'/%3E%3Ctext x='16' y='22' font-size='12' text-anchor='middle' fill='%23fff'%3ETF%3C/text%3E%3C/svg%3E">
 </head>
 <body>
 
 <!---------------header--------------->
     <header id="header">
         <div id="top-header">
-            <button onclick="latvianMode()" class="langauge-buttons">LV</button>
-            <button onclick="englishMode()" class="langauge-buttons">EN</button>
-            <button onclick="italianMode()" class="langauge-buttons">IT</button>
+            <a onclick="latvianMode()" class="langauge-buttons">LV</a>
+            <a onclick="englishMode()" class="langauge-buttons">EN</a>
+            <a onclick="italianMode()" class="langauge-buttons">IT</a>
             <div class="dropdown-top">
-                <button class="nav-button-top">Izskats</button>
+                <a class="nav-button-top">Izskats</a>
                 <div class="dropdown-content-top">
                     <a href='#' onclick="lightMode(); return false;" class="dropdowned-button-top">Gaišs</a>
                     <a href='#' onclick="darkMode(); return false;" class="dropdowned-button-top">Tumšs</a>
@@ -31,7 +32,7 @@
             <a href="#home" class="nav-button">Galvenā lapa</a>
 <!-------------dropdown------------->
             <div class="dropdown">
-                <button class="nav-button">Sadaļas</button>
+                <a class="nav-button">Sadaļas</a>
                 <div class="dropdown-content">
                   <a href="interactive_tools/pomodoro.html" class="dropdowned-button">Pomodoro pulkstenis</a>
                   <a href="interactive_tools/planotajs.html" class="dropdowned-button">Mērķu plānotājs</a>
@@ -43,26 +44,6 @@
             <a href="basic info/about_us.html" class="nav-button">Par mums</a>
             <a href="basic info/contacts.html" class="nav-button">Kontakti</a>
             <a href="basic info/forum.html" class="nav-button">Forums</a>
-            <a href="" class="nav-button" id="profile-button">Profils</a> 
-            <button id="log-in-button">Pieslēgties</button>
-            <button id="sign-in-button">Pierakstīties</button>
-<!-------------Konta-logi------------->
-            <div class="log-in-window">
-                <h1>Pieslēdzieties lai turpinātu lapā</h1>
-                <p>Ievadiet sava konta e-pasta adresi un paroli</p>
-                <input class="input" id="epasta-ievade">
-                <input class="input" id="paroles-ievade">
-            </div>
-
-            <div class="sign-in-window">
-                <h1>Pierakstieties lai turpinātu lapā</h1>
-                <p>Ievadiet visus nepieciešamos datus</p>
-                <input class="input" id="varda-ievade">
-                <input class="input" id="uzvarda-ievade">
-                <input class="input" id="lietotajvarda-ievade">
-                <input class="input" id="jauna-epasta-ievade">
-                <input class="input" id="jaunas-paroles-ievade">
-            </div>
         </nav>
         </div>
     </header>
@@ -87,37 +68,59 @@
 <!-------------cards------------->
         <section id="cards" class="regular-section">
             <div class="card" id="pomodoro-card">
-                <h1>Pomodoro pulkstenis</h1>
-                <button class="card-button" href="interactive_tools/pomodoro.html">Pāriet</button>
+                <h2>Pomodoro pulkstenis</h2>
+                <a class="card-button" href="interactive_tools/pomodoro.html">Pāriet</a>
             </div>
             <div class="card" id="task-card">
-                <h1>Mērķu plānotājs</h1>
-                <button class="card-button" href="interactive_tools/planotajs.html">Pāriet</button>
+                <h2>Mērķu plānotājs</h2>
+                <a class="card-button" href="interactive_tools/planotajs.html">Pāriet</a>
             </div>
             <div class="card" id="eisenhower-card">
-                <h1>Eizenhauera matrica</h1>
-                <button class="card-button" href="interactive_tools/eisenhower.html">Pāriet</button>
+                <h2>Eizenhauera matrica</h2>
+                <a class="card-button" href="interactive_tools/eisenhower.html">Pāriet</a>
             </div>
             <div class="card" id="calendar-card">
-                <h1>Uzdevumu ķēdes kalendārs</h1>
-                <button class="card-button" href="interactive_tools/calendar.html">Pāriet</button>
+                <h2>Uzdevumu ķēdes kalendārs</h2>
+                <a class="card-button" href="interactive_tools/calendar.html">Pāriet</a>
             </div>
         </section>
     </main>
 
 <!-------------footer------------->
     <footer id="footer-section">
-        <p>Copyright © 2025 DSabovics - All Rights Reserved.</p>
-        <div class="social-media">
-            <a>Instagram</a>
-            <a>Tiktok</a>
-            <a>Twitter</a>
-            <a>Facebook</a>
+        <div id="footer-info">
+            <p>Copyright © 2025 DSabovics - All Rights Reserved.</p>
+            <div class="social-media">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Instagram</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Tiktok</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Twitter</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Facebook</a>
+            </div>
+        </div>
+        <div id="feedback-form-container">
+            <h3>Nosūtīt atsauksmi</h3>
+            <form id="feedback-form" novalidate>
+                <div class="form-field">
+                    <input type="text" id="feedback-name" placeholder="vārds un uzvārds">
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-field">
+                    <input type="email" id="feedback-email" placeholder="e-pasts">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-field">
+                    <textarea id="feedback-message" placeholder="atsauksme" rows="4"></textarea>
+                    <span class="error-message" id="message-error"></span>
+                </div>
+                <button type="submit" class="feedback-submit-button">Sūtīt</button>
+            </form>
+            <div id="feedback-message-display"></div>
         </div>
     </footer>
 
 
 <!--scripts-->
-    <script src="src/scripts/main.js"></script>
+    <!-- load the existing site script -->
+    <script src="src/script/index.js"></script>
 </body>
 </html>
