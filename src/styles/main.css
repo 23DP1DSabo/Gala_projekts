@@ -507,28 +507,3 @@ input.input-error, textarea.input-error {
     border-color: rgb(255, 100, 100) !important;
     background-color: rgba(255, 0, 0, 0.1) !important;
 }
-
-
-
-/*------------------responsivity------------------*/
-@media (max-width: 800px) {
-
-    #navigation {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    };
-
-    #logo {
-        max-height: 15vh;
-        height: auto;
-        margin-left: 10px;
-    };
-
-    .regular-section p, li {
-        font-size: 12px;
-    };
-
-    .regular-section h1 {
-        padding-top: 70px;
-        margin-top: -70px;
-    }
-}

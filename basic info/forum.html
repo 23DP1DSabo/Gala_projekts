@@ -4,12 +4,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum</title>
+    <link rel="stylesheet" type="text/css" href="../src/styles/main.css">
+    <link rel="stylesheet" type="text/css" href="../src/styles/themes.css">
+    <link rel="stylesheet" type="text/css" href="../src/styles/responsivity.css">
+    <link rel="stylesheet" type="text/css" href="../src/styles/forum.css">
+    <link rel="icon" href="../src/images/favicon2.ico" type="image/x-icon">
 </head>
 <body>
-    <section id="cards" class="regular-section">
-        <div class="card" id="pomodoro-card">
-            <h1>Pomodoro pulkstenis</h1>
-            <button class="card-button" href="interactive_tools/pomodoro.html">Pāriet</button>
-    </section>
+    <header>
+        <h1>Forums</h1>
+    </header>
+
+    <main>
+        <div class="forum-controls">
+            <button id="new-post-button">New Post</button>
+        </div>
+
+        <!-- Modal for creating post -->
+        <div id="post-modal" class="modal" aria-hidden="true" style="display:none;">
+            <div class="modal-content">
+                <h2>New Post</h2>
+                <input id="post-title" type="text" placeholder="Title" />
+                <textarea id="post-body" rows="8" placeholder="Write your post..."></textarea>
+                <div class="modal-actions">
+                    <button id="post-submit">Post</button>
+                    <button id="post-cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts feed -->
+        <section id="posts-feed" class="posts-feed">
+            <!-- Posts will be injected here -->
+        </section>
+    </main>
+
+    <style>
+        /* Minimal modal styling for forum page */
+        .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.4); }
+        .modal[aria-hidden='true'] { display:none; }
+        .modal-content { background:#fff; padding:16px; border-radius:6px; width:90%; max-width:640px; box-shadow:0 6px 20px rgba(0,0,0,0.2);} 
+        .modal-content input, .modal-content textarea { width:100%; margin:8px 0; padding:8px; box-sizing:border-box; }
+        .modal-actions { display:flex; gap:8px; justify-content:flex-end; }
+        .posts-feed { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
+        .post { border:1px solid #ccc; padding:12px; border-radius:6px; background:#fff; }
+        .post h3 { margin:0 0 8px 0; }
+        .post .meta { font-size:0.85rem; color:#666; margin-top:8px; }
+    </style>
+
+    <script src="../src/script/index.js"></script>
 </body>
 </html>

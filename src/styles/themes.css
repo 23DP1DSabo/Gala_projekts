@@ -1,3 +1,15 @@
+:root {
+    --header-height: 70px; /* default, will be updated by JS */
+}
+
+#home {
+    /* allow anchor jumps to account for the fixed header */
+    scroll-margin-top: var(--header-height);
+    /* Ensure the hero/first section fills the remaining viewport height */
+    min-height: calc(100vh - var(--header-height));
+    box-sizing: border-box;
+}
+
 body.light-mode {
     background-color: #ffffff;
     color: #000000;

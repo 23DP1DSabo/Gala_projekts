@@ -1,11 +1,23 @@
 // Themes ------
+function setTheme(theme) {
+  document.body.classList.remove('light-mode', 'dark-mode');
+  document.body.classList.add(theme);
+  localStorage.setItem('theme', theme);
+}
+
 function lightMode() {
-    document.body.classList.toggle("light-mode");
-  }
-  
+  setTheme('light-mode');
+}
+
 function darkMode() {
-    document.body.classList.toggle("dark-mode");
-  }
+  setTheme('dark-mode');
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('theme');
+  const preferred = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light-mode';
+  setTheme(saved || preferred);
+});
 
 
 
@@ -35,32 +47,25 @@ if (!window.location.hash) {
 const header = document.getElementById('header');
 const hero = document.getElementById('home');
 
-const updateHeroPadding = () => {
+const updateHeroSpacing = () => {
     if (!header || !hero) return;
     const h = header.offsetHeight;
-    hero.style.paddingTop = `${h}px`;
-    // Debugging info to help track layout issues
-    console.log('[layout] updateHeroPadding -> header.offsetHeight=', h, 'hero.paddingTop=', hero.style.paddingTop);
+    hero.style.marginTop = `${h}px`;
+    document.documentElement.style.setProperty('--header-height', `${h}px`);
 };
 
-// Run after full load to ensure fonts/images don't change header height afterwards
-window.addEventListener('load', () => {
-    updateHeroPadding();
-    // small delayed recalculation for late layout shifts (fonts, rendering)
-    setTimeout(updateHeroPadding, 200);
+document.addEventListener('DOMContentLoaded', () => {
+    updateHeroSpacing();
+    setTimeout(updateHeroSpacing, 100);
+    setTimeout(updateHeroSpacing, 300);
 });
 
-// Recalculate on resize
-window.addEventListener('resize', updateHeroPadding);
+window.addEventListener('load', updateHeroSpacing);
+window.addEventListener('resize', updateHeroSpacing);
 
-// If ResizeObserver is available, watch the header for size changes
 if (typeof ResizeObserver !== 'undefined' && header) {
-    try {
-        const ro = new ResizeObserver(() => updateHeroPadding());
+        const ro = new ResizeObserver(() => updateHeroSpacing());
         ro.observe(header);
-    } catch (err) {
-        // ignore if ResizeObserver not supported
-    }
 }
 
 
@@ -130,7 +135,6 @@ Object.keys(feedbackInputs).forEach(fieldName => {
             validateField(fieldName);
         }
     });
-    // Prevent form submission on Enter key in textarea/input
     feedbackInputs[fieldName].addEventListener('keydown', (e) => {
         if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
             e.preventDefault();
@@ -165,4 +169,112 @@ if (feedbackForm) {
         }
     });
 }
+
+// Simple Forum Posting (no accounts) ------
+const FORUM_KEY = 'forum-posts';
+
+function escapeHtml(str) {
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+}
+
+function openPostModal() {
+    const modal = document.getElementById('post-modal');
+    if (!modal) return;
+    modal.style.display = '';
+    modal.setAttribute('aria-hidden', 'false');
+    const title = document.getElementById('post-title');
+    if (title) title.focus();
+}
+
+function closePostModal() {
+    const modal = document.getElementById('post-modal');
+    if (!modal) return;
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    const title = document.getElementById('post-title');
+    const body = document.getElementById('post-body');
+    if (title) title.value = '';
+    if (body) body.value = '';
+}
+
+function getPosts() {
+    try {
+        return JSON.parse(localStorage.getItem(FORUM_KEY) || '[]');
+    } catch (e) {
+        return [];
+    }
+}
+
+function savePosts(posts) {
+    localStorage.setItem(FORUM_KEY, JSON.stringify(posts));
+}
+
+function renderPosts(posts) {
+    const feed = document.getElementById('posts-feed');
+    if (!feed) return;
+    if (!posts || posts.length === 0) {
+        feed.innerHTML = '<p>No posts yet. Be the first to post!</p>';
+        return;
+    }
+    feed.innerHTML = posts.map(p => {
+        const title = escapeHtml(p.title);
+        const body = escapeHtml(p.body).replace(/\n/g, '<br/>');
+        const time = new Date(p.created).toLocaleString();
+        return `<article class="post"><h3>${title}</h3><div class="post-body">${body}</div><div class="meta">${time}</div></article>`;
+    }).join('\n');
+}
+
+function loadPosts() {
+    const posts = getPosts();
+    renderPosts(posts);
+}
+
+function submitPost() {
+    const titleEl = document.getElementById('post-title');
+    const bodyEl = document.getElementById('post-body');
+    if (!titleEl || !bodyEl) return;
+    const title = titleEl.value.trim();
+    const body = bodyEl.value.trim();
+    if (!title || !body) {
+        alert('Please enter a title and some content.');
+        return;
+    }
+    const posts = getPosts();
+    posts.unshift({ title, body, created: Date.now() });
+    savePosts(posts);
+    renderPosts(posts);
+    closePostModal();
+}
+
+// Wire up forum UI if present
+document.addEventListener('DOMContentLoaded', () => {
+    const newBtn = document.getElementById('new-post-button');
+    if (newBtn) newBtn.addEventListener('click', openPostModal);
+
+    const cancel = document.getElementById('post-cancel');
+    if (cancel) cancel.addEventListener('click', closePostModal);
+
+    const submit = document.getElementById('post-submit');
+    if (submit) submit.addEventListener('click', submitPost);
+
+    // Close modal on backdrop click
+    const modal = document.getElementById('post-modal');
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closePostModal();
+        });
+    }
+
+    // Close on Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closePostModal();
+    });
+
+    loadPosts();
+});
 
