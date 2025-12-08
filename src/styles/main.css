@@ -25,7 +25,6 @@ html, body {
 /*------------------top-header------------------*/
 #top-header {
     display: flex;
-    /* keep top-header inside the header flow so header offsetHeight includes it */
     position: relative;
     justify-content: flex-end;
     align-items: center;
@@ -333,6 +332,7 @@ section p {
     color: rgb(255, 255, 255);
     cursor: pointer;
     font-family: VCR_OSD;
+    text-decoration: none;
 }
 
 .card-button:hover {

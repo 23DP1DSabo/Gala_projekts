@@ -1,4 +1,4 @@
-// Themes ------
+// Themes -----------
 function setTheme(theme) {
   document.body.classList.remove('light-mode', 'dark-mode');
   document.body.classList.add(theme);
@@ -21,7 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-// Languages ------
+// Languages -----------
 function latvianMode() {
   // TODO
 }
@@ -36,14 +36,14 @@ function italianMode() {
 
 
 
-// Load on home ------
+// Load on home ------------
 if (!window.location.hash) {
     window.location.hash = "#home";
 }
 
 
 
-// Header not overflowing onto content ------
+// Header not overflowing onto content -----------
 const header = document.getElementById('header');
 const hero = document.getElementById('home');
 
@@ -70,7 +70,7 @@ if (typeof ResizeObserver !== 'undefined' && header) {
 
 
 
-// Feedback Form Validation ------
+// Feedback Form Validation -----------
 const feedbackForm = document.getElementById('feedback-form');
 const feedbackMessageDisplay = document.getElementById('feedback-message-display');
 
@@ -91,18 +91,18 @@ const validationRules = {
         if (!value.trim()) return 'Lūdzu ievadiet savu vārdu un uzvārdu (caur atstarpi).';
         if (value.trim().length < 5) return 'Laukā jābūt vārdam, atstarpei un uzvārdam.';
         return '';
-    },
+},
     email: (value) => {
         if (!value.trim()) return 'Lūdzu ievadiet savu e-pasta adresi.';
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(value)) return 'Lūdzu ievadiet derīgu e-pasta adresi ar @.';
         return '';
-    },
+},
     message: (value) => {
         if (!value.trim()) return 'Lūdzu ievadiet savu atsauksmi.';
         if (value.trim().length < 10) return 'Atsauksmei jābūt vismaz no 10 simboliem.';
         return '';
-    }
+}
 };
 
 const clearError = (fieldName) => {
@@ -118,7 +118,6 @@ const showError = (fieldName, message) => {
 const validateField = (fieldName) => {
     const value = feedbackInputs[fieldName].value;
     const error = validationRules[fieldName](value);
-    
     if (error) {
         showError(fieldName, error);
         return false;
@@ -160,9 +159,7 @@ if (feedbackForm) {
             
             feedbackForm.reset();
             Object.keys(errorMessages).forEach(key => clearError(key));
-            
             console.log('Feedback:', { name, email, message });
-            
             setTimeout(() => {
                 feedbackMessageDisplay.textContent = '';
             }, 5000);
@@ -170,7 +167,9 @@ if (feedbackForm) {
     });
 }
 
-// Simple Forum Posting (no accounts) ------
+
+
+// Forum posting-----------
 const FORUM_KEY = 'forum-posts';
 
 function escapeHtml(str) {
@@ -251,7 +250,6 @@ function submitPost() {
     closePostModal();
 }
 
-// Wire up forum UI if present
 document.addEventListener('DOMContentLoaded', () => {
     const newBtn = document.getElementById('new-post-button');
     if (newBtn) newBtn.addEventListener('click', openPostModal);
@@ -262,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const submit = document.getElementById('post-submit');
     if (submit) submit.addEventListener('click', submitPost);
 
-    // Close modal on backdrop click
     const modal = document.getElementById('post-modal');
     if (modal) {
         modal.addEventListener('click', (e) => {
@@ -270,7 +267,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close on Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closePostModal();
     });

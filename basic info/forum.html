@@ -19,8 +19,6 @@
         <div class="forum-controls">
             <button id="new-post-button">New Post</button>
         </div>
-
-        <!-- Modal for creating post -->
         <div id="post-modal" class="modal" aria-hidden="true" style="display:none;">
             <div class="modal-content">
                 <h2>New Post</h2>
@@ -33,14 +31,10 @@
             </div>
         </div>
 
-        <!-- Posts feed -->
-        <section id="posts-feed" class="posts-feed">
-            <!-- Posts will be injected here -->
-        </section>
+        <section id="posts-feed" class="posts-feed"></section>
     </main>
 
     <style>
-        /* Minimal modal styling for forum page */
         .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.4); }
         .modal[aria-hidden='true'] { display:none; }
         .modal-content { background:#fff; padding:16px; border-radius:6px; width:90%; max-width:640px; box-shadow:0 6px 20px rgba(0,0,0,0.2);} 
