@@ -16,9 +16,20 @@
     </header>
 
     <main>
+<!-------------forum-controls------------->
         <div class="forum-controls">
-            <button id="new-post-button">New Post</button>
+            <button id="new-post-button">Pievienot</button>
+            <div id="filter-search-sort">
+                <button id="search-posts">Meklēt</button>
+                <input type="text" id="search-input" placeholder="Nosaukums vai atslēgvārds">
+                <p>Kārtošnas metodes: </p>
+                <button class="sort-button" id="sort-by-A-Z">A-Z</button>
+                <button class="sort-button" id="sort-by-Z-A">Z-A</button>
+                <button class="sort-button" id="sort-by-newest">Newest</button>
+                <button class="sort-button" id="sort-by-oldest">Oldest</button>
+            </div>
         </div>
+<!-------------post-creation------------->
         <div id="post-modal" class="modal" aria-hidden="true" style="display:none;">
             <div class="modal-content">
                 <h2>New Post</h2>
@@ -31,6 +42,7 @@
             </div>
         </div>
 
+<!-------------forum-structure------------->
         <section id="posts-feed" class="posts-feed"></section>
     </main>
 

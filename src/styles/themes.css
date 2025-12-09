@@ -151,6 +151,10 @@ body.light-mode #footer-info {
     color: #000000;
 }
 
+body.light-mode .social-media {
+    border-color: #000000;
+}
+
 body.light-mode #feedback-form-container {
     background-color: #ffffff;
     color: #000000;

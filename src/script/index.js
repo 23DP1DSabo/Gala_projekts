@@ -23,15 +23,15 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // Languages -----------
 function latvianMode() {
-  // TODO
+  console.log("latvian language default");
 }
 
 function englishMode() {
-  // TODO
+    console.log("english language in development");
 }
 
 function italianMode() {
-  // TODO
+    console.log("italian language in development");
 }
 
 
@@ -243,11 +243,11 @@ function submitPost() {
         alert('Please enter a title and some content.');
         return;
     }
-    const posts = getPosts();
-    posts.unshift({ title, body, created: Date.now() });
-    savePosts(posts);
-    renderPosts(posts);
-    closePostModal();
+const posts = getPosts();
+posts.unshift({ title, body, created: Date.now() });
+savePosts(posts);
+renderPosts(posts);
+closePostModal();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -271,6 +271,6 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closePostModal();
     });
 
-    loadPosts();
+loadPosts();
 });
 
