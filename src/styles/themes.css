@@ -1,3 +1,13 @@
+:root {
+    --header-height: 70px;
+}
+
+#home {
+    scroll-margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+    box-sizing: border-box;
+}
+
 body.light-mode {
     background-color: #ffffff;
     color: #000000;
@@ -51,6 +61,7 @@ body.light-mode .dropdowned-button-top:hover {
 body.light-mode .nav-button {
     background-color: #ffffff;
     color: #000000;
+    border-color: #000000;
 }
 
 body.light-mode .nav-button:hover {
@@ -82,8 +93,25 @@ body.light-mode .dropdowned-button:active {
 }
 
 body.light-mode .regular-section {
-    border: #000000 3px solid;
+    border: 3px solid #000000;
     border-radius: 8px;
+    background-color: #fff;
+    color: #000000;
+}
+
+body.light-mode #main-section {
+    border: 3px solid #000000;
+    color: #000000;
+}
+
+body.light-mode #sadalas {
+    border: 3px solid #000000;
+    color: #000000;
+    background-color: #fff;
+}
+
+body.light-mode #aside-section {
+    border: 3px solid #000000;
     background-color: #fff;
     color: #000000;
 }
@@ -92,6 +120,14 @@ body.light-mode .card-button {
     border-color: rgb(0, 0, 0);
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
+}
+
+body.light-mode #plan-button {
+    border-color: rgb(0, 0, 0);
+}
+
+body.light-mode .card {
+    border-color: rgb(0,0,0);
 }
 
 body.light-mode .card-button:hover {
@@ -107,5 +143,47 @@ body.light-mode .card-button:active {
 }
 
 body.light-mode #footer-section {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.light-mode #footer-info {
+    color: #000000;
+}
+
+body.light-mode #feedback-form-container {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+body.light-mode #feedback-form {
+    color: #000000;
+}
+
+body.light-mode #feedback-form input,
+body.light-mode #feedback-form textarea {
+    background-color: #fff;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+body.light-mode #feedback-form input::placeholder,
+body.light-mode #feedback-form textarea::placeholder {
+    color: #666666;
+}
+
+body.light-mode .feedback-submit-button {
     background-color: #000000;
+    color: #ffffff;
+    border: 1px solid #000000;
+}
+
+body.light-mode .feedback-submit-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #000000;
+}
+
+body.light-mode .error-message {
+    color: #d32f2f;
 }

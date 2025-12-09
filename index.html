@@ -7,18 +7,18 @@
     <link rel="stylesheet" type="text/css" href="src/styles/main.css">
     <link rel="stylesheet" type="text/css" href="src/styles/themes.css">
     <link rel="stylesheet" type="text/css" href="src/styles/responsivity.css">
-    <link rel="icon" type="image/x-icon" href="src/images/icon.ico"> 
+    <link rel="icon" href="src/images/favicon2.ico" type="image/x-icon">
 </head>
 <body>
 
 <!---------------header--------------->
     <header id="header">
         <div id="top-header">
-            <button onclick="latvianMode()" class="langauge-buttons">LV</button>
-            <button onclick="englishMode()" class="langauge-buttons">EN</button>
-            <button onclick="italianMode()" class="langauge-buttons">IT</button>
+            <a onclick="latvianMode()" class="langauge-buttons">LV</a>
+            <a onclick="englishMode()" class="langauge-buttons">EN</a>
+            <a onclick="italianMode()" class="langauge-buttons">IT</a>
             <div class="dropdown-top">
-                <button class="nav-button-top">Izskats</button>
+                <a class="nav-button-top">Izskats</a>
                 <div class="dropdown-content-top">
                     <a href='#' onclick="lightMode(); return false;" class="dropdowned-button-top">Gaišs</a>
                     <a href='#' onclick="darkMode(); return false;" class="dropdowned-button-top">Tumšs</a>
@@ -31,7 +31,7 @@
             <a href="#home" class="nav-button">Galvenā lapa</a>
 <!-------------dropdown------------->
             <div class="dropdown">
-                <button class="nav-button">Interaktīvie rīki</button>
+                <a class="nav-button">Sadaļas</a>
                 <div class="dropdown-content">
                   <a href="interactive_tools/pomodoro.html" class="dropdowned-button">Pomodoro pulkstenis</a>
                   <a href="interactive_tools/planotajs.html" class="dropdowned-button">Mērķu plānotājs</a>
@@ -42,27 +42,7 @@
 <!-------------dropdown-end------------->
             <a href="basic info/about_us.html" class="nav-button">Par mums</a>
             <a href="basic info/contacts.html" class="nav-button">Kontakti</a>
-            <a href="basic info/forum.html" class="nav-button">Forumi</a>
-            <a href="" class="nav-button" id="profile-button">Profils</a> 
-            <button id="log-in-button">Pieslēgties</button>
-            <button id="sign-in-button">Pierakstīties</button>
-<!-------------Konta-logi------------->
-            <div class="log-in-window">
-                <h1>Pieslēdzieties lai turpinātu lapā</h1>
-                <p>Ievadiet sava konta e-pasta adresi un paroli</p>
-                <form class="input" id="epasta-ievade">
-                <form class="input" id="paroles-ievade">
-            </div>
-
-            <div class="sign-in-window">
-                <h1>Pierakstieties lai turpinātu lapā</h1>
-                <p>Ievadiet visus nepieciešamos datus</p>
-                <form class="input" id="varda-ievade">
-                <form class="input" id="uzvarda-ievade">
-                <form class="input" id="lietotajvarda-ievade">
-                <form class="input" id="jauna-epasta-ievade">
-                <form class="input" id="jaunas-paroles-ievade">
-            </div>
+            <a href="basic info/forum.html" class="nav-button">Forums</a>
         </nav>
         </div>
     </header>
@@ -75,7 +55,7 @@
 
 <!-------------aside-section------------->
         <aside id="aside-section" class="regular-section">
-            <p>Produktivitāte - </p>
+            <p>Produktivitāte - kāda cilvēka darba ražīgums, efektivitāte jeb veiktspēja neatkarībā no laika vai darba apjoma.</p>
         </aside>
 
 <!-------------regular-sections------------->
@@ -87,37 +67,58 @@
 <!-------------cards------------->
         <section id="cards" class="regular-section">
             <div class="card" id="pomodoro-card">
-                <h1>Pomodoro pulkstenis</h1>
-                <button class="card-button" href="interactive_tools/pomodoro.html">Pāriet</button>
+                <h2>Pomodoro pulkstenis</h2>
+                <a class="card-button" href="interactive_tools/pomodoro.html">Pāriet</a>
             </div>
             <div class="card" id="task-card">
-                <h1>Mērķu plānotājs</h1>
-                <button class="card-button" href="interactive_tools/planotajs.html">Pāriet</button>
+                <h2>Mērķu plānotājs</h2>
+                <a class="card-button" id="plan-button" href="interactive_tools/planotajs.html">Pāriet</a>
             </div>
             <div class="card" id="eisenhower-card">
-                <h1>Eizenhauera matrica</h1>
-                <button class="card-button" href="interactive_tools/eisenhower.html">Pāriet</button>
+                <h2>Eizenhauera matrica</h2>
+                <a class="card-button" href="interactive_tools/eisenhower.html">Pāriet</a>
             </div>
             <div class="card" id="calendar-card">
-                <h1>Uzdevumu ķēdes kalendārs</h1>
-                <button class="card-button" href="interactive_tools/calendar.html">Pāriet</button>
+                <h2>Uzdevumu ķēdes kalendārs</h2>
+                <a class="card-button" href="interactive_tools/calendar.html">Pāriet</a>
             </div>
         </section>
     </main>
 
 <!-------------footer------------->
     <footer id="footer-section">
-        <p>Copyright © 2025 DSabovics - All Rights Reserved.</p>
-        <div class="social-media">
-            <a>Instagram</a>
-            <a>Tiktok</a>
-            <a>Twitter</a>
-            <a>Facebook</a>
+        <div id="footer-info">
+            <p>Copyright © 2025 DSabovics - All Rights Reserved.</p>
+            <div class="social-media">
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Instagram</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Tiktok</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Twitter</a>
+                <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Facebook</a>
+            </div>
+        </div>
+        <div id="feedback-form-container">
+            <h3>Nosūtīt atsauksmi</h3>
+            <form id="feedback-form" novalidate>
+                <div class="form-field">
+                    <input type="text" id="feedback-name" placeholder="vārds un uzvārds">
+                    <span class="error-message" id="name-error"></span>
+                </div>
+                <div class="form-field">
+                    <input type="email" id="feedback-email" placeholder="e-pasts">
+                    <span class="error-message" id="email-error"></span>
+                </div>
+                <div class="form-field">
+                    <textarea id="feedback-message" placeholder="atsauksme" rows="4"></textarea>
+                    <span class="error-message" id="message-error"></span>
+                </div>
+                <button type="submit" class="feedback-submit-button">Sūtīt</button>
+            </form>
+            <div id="feedback-message-display"></div>
         </div>
     </footer>
 
 
 <!--scripts-->
-    <script src="src/scripts/main.js"></script>
+    <script src="src/script/index.js"></script>
 </body>
 </html>
