@@ -191,3 +191,58 @@ body.light-mode .feedback-submit-button:hover {
 body.light-mode .error-message {
     color: #d32f2f;
 }
+
+body.light-mode .post-card {
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+body.light-mode .post-card h3,
+body.light-mode .post-card p {
+    color: rgb(0, 0, 0);
+}
+
+body.light-mode .post-date,
+body.light-mode .post-edited {
+    color: rgb(100, 100, 100);
+}
+
+body.light-mode .post-actions button,
+body.light-mode .like-btn,
+body.light-mode .dislike-btn {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+body.light-mode .post-actions button:hover,
+body.light-mode .like-btn:hover,
+body.light-mode .dislike-btn:hover {
+    background-color: rgb(230, 230, 230);
+}
+
+body.light-mode .modal-content {
+    background-color: rgb(255, 255, 255);
+    border: 3px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+}
+
+body.light-mode #post-title,
+body.light-mode #post-body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 2px solid rgb(0, 0, 0);
+}
+
+body.light-mode #post-submit,
+body.light-mode #post-cancel {
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border: 3px solid rgb(0, 0, 0);
+}
+
+body.light-mode #post-submit:hover,
+body.light-mode #post-cancel:hover {
+    background-color: rgb(230, 230, 230);
+}

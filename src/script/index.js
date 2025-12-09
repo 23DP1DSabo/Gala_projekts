@@ -128,6 +128,7 @@ const validateField = (fieldName) => {
 };
 
 Object.keys(feedbackInputs).forEach(fieldName => {
+    if (!feedbackInputs[fieldName]) return;
     feedbackInputs[fieldName].addEventListener('blur', () => validateField(fieldName));
     feedbackInputs[fieldName].addEventListener('input', () => {
         if (errorMessages[fieldName].textContent) {
@@ -172,46 +173,27 @@ if (feedbackForm) {
 // Forum posting-----------
 const FORUM_KEY = 'forum-posts';
 
-function escapeHtml(str) {
-    return String(str)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-}
+const $ = id => document.getElementById(id);
+const escapeHtml = str => String(str).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const getPosts = () => { try { return JSON.parse(localStorage.getItem(FORUM_KEY) || '[]'); } catch(e) { return []; } };
+const savePosts = p => localStorage.setItem(FORUM_KEY, JSON.stringify(p));
 
-function openPostModal() {
-    const modal = document.getElementById('post-modal');
-    if (!modal) return;
-    modal.style.display = '';
-    modal.setAttribute('aria-hidden', 'false');
-    const title = document.getElementById('post-title');
-    if (title) title.focus();
-}
-
-function closePostModal() {
-    const modal = document.getElementById('post-modal');
-    if (!modal) return;
-    modal.style.display = 'none';
-    modal.setAttribute('aria-hidden', 'true');
-    const title = document.getElementById('post-title');
-    const body = document.getElementById('post-body');
-    if (title) title.value = '';
-    if (body) body.value = '';
-}
-
-function getPosts() {
-    try {
-        return JSON.parse(localStorage.getItem(FORUM_KEY) || '[]');
-    } catch (e) {
-        return [];
+const toggleModal = (id, show) => {
+    const m = $(id);
+    if (!m) return;
+    if (show) {
+        m.classList.add('show');
+        m.setAttribute('aria-hidden', 'false');
+    } else {
+        m.classList.remove('show');
+        m.setAttribute('aria-hidden', 'true');
     }
-}
+};
 
-function savePosts(posts) {
-    localStorage.setItem(FORUM_KEY, JSON.stringify(posts));
-}
+const openPostModal = () => { toggleModal('post-modal', true); $('post-title')?.focus(); };
+const closePostModal = () => { toggleModal('post-modal', false); $('post-title').value = $('post-body').value = ''; window.currentEditIndex = null; };
+const closeViewPostModal = () => toggleModal('view-post-modal', false);
+const closeDeleteConfirmModal = () => { toggleModal('delete-confirm-modal', false); window.deletePostIndex = null; };
 
 function renderPosts(posts) {
     const feed = document.getElementById('posts-feed');
@@ -220,57 +202,151 @@ function renderPosts(posts) {
         feed.innerHTML = '<p>No posts yet. Be the first to post!</p>';
         return;
     }
-    feed.innerHTML = posts.map(p => {
+    feed.innerHTML = posts.map((p, idx) => {
         const title = escapeHtml(p.title);
         const body = escapeHtml(p.body).replace(/\n/g, '<br/>');
         const time = new Date(p.created).toLocaleString();
-        return `<article class="post"><h3>${title}</h3><div class="post-body">${body}</div><div class="meta">${time}</div></article>`;
+        const editedLabel = p.edited ? '<span class="post-edited">(edited)</span>' : '';
+        const likes = p.likes || 0;
+        const dislikes = p.dislikes || 0;
+        return `<article class="post-card">
+            <h3>${title}</h3>
+            <div class="post-date">${time}${editedLabel ? ' ' + editedLabel : ''}</div>
+            <p>${body}</p>
+            <div class="reactions">
+                <button class="like-btn" data-index="${idx}">👍 ${likes}</button>
+                <button class="dislike-btn" data-index="${idx}">👎 ${dislikes}</button>
+            </div>
+            <div class="post-actions">
+                <button class="view-post-btn" data-index="${idx}">Apskatīt</button>
+                <button class="edit-post-btn" data-index="${idx}">Rediģēt</button>
+                <button class="delete-post-btn" data-index="${idx}">Dzēst</button>
+            </div>
+        </article>`;
     }).join('\n');
 }
 
-function loadPosts() {
-    const posts = getPosts();
-    renderPosts(posts);
-}
+const loadPosts = () => renderPosts(getPosts());
 
-function submitPost() {
-    const titleEl = document.getElementById('post-title');
-    const bodyEl = document.getElementById('post-body');
-    if (!titleEl || !bodyEl) return;
-    const title = titleEl.value.trim();
-    const body = bodyEl.value.trim();
-    if (!title || !body) {
-        alert('Please enter a title and some content.');
-        return;
+const submitPost = () => {
+    const title = $('post-title')?.value.trim();
+    const body = $('post-body')?.value.trim();
+    if (!title || !body) return alert('Please enter a title and some content.');
+    const posts = getPosts();
+    const idx = window.currentEditIndex;
+    if (idx !== undefined && idx !== null) {
+        posts[idx] = { ...posts[idx], title, body, edited: true };
+        window.currentEditIndex = null;
+    } else {
+        posts.unshift({ title, body, created: Date.now(), edited: false, likes: 0, dislikes: 0 });
     }
-const posts = getPosts();
-posts.unshift({ title, body, created: Date.now() });
-savePosts(posts);
-renderPosts(posts);
-closePostModal();
-}
+    savePosts(posts);
+    renderPosts(posts);
+    closePostModal();
+};
+
+const viewPost = idx => {
+    const posts = getPosts();
+    if (idx < 0 || idx >= posts.length) return;
+    const p = posts[idx], time = new Date(p.created).toLocaleString();
+    $('view-post-title').textContent = p.title;
+    $('view-post-body').innerHTML = escapeHtml(p.body).replace(/\n/g, '<br/>');
+    $('view-post-meta').textContent = `${time}${p.edited ? ' (edited)' : ''}`;
+    toggleModal('view-post-modal', true);
+};
+
+const editPost = idx => {
+    const posts = getPosts();
+    if (idx < 0 || idx >= posts.length) return;
+    $('post-title').value = posts[idx].title;
+    $('post-body').value = posts[idx].body;
+    window.currentEditIndex = idx;
+    openPostModal();
+};
+
+const deletePost = idx => {
+    const posts = getPosts();
+    if (idx < 0 || idx >= posts.length) return;
+    window.deletePostIndex = idx;
+    toggleModal('delete-confirm-modal', true);
+};
+
+const confirmDelete = () => {
+    const idx = window.deletePostIndex;
+    const posts = getPosts();
+    posts.splice(idx, 1);
+    savePosts(posts);
+    renderPosts(posts);
+    closeDeleteConfirmModal();
+};
+
+const likePost = idx => {
+    const posts = getPosts();
+    if (idx < 0 || idx >= posts.length) return;
+    posts[idx].likes = (posts[idx].likes || 0) + 1;
+    savePosts(posts);
+    renderPosts(posts);
+};
+
+const dislikePost = idx => {
+    const posts = getPosts();
+    if (idx < 0 || idx >= posts.length) return;
+    posts[idx].dislikes = (posts[idx].dislikes || 0) + 1;
+    savePosts(posts);
+    renderPosts(posts);
+};
 
 document.addEventListener('DOMContentLoaded', () => {
-    const newBtn = document.getElementById('new-post-button');
-    if (newBtn) newBtn.addEventListener('click', openPostModal);
-
-    const cancel = document.getElementById('post-cancel');
-    if (cancel) cancel.addEventListener('click', closePostModal);
-
-    const submit = document.getElementById('post-submit');
-    if (submit) submit.addEventListener('click', submitPost);
-
-    const modal = document.getElementById('post-modal');
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) closePostModal();
+    console.log('=== DOMContentLoaded ===');
+    console.log('Current page URL:', window.location.pathname);
+    console.log('$ function:', typeof $);
+    const feedEl = document.querySelector('#posts-feed') || document.querySelector('.posts-feed');
+    console.log('posts-feed using $ function:', $('#posts-feed'));
+    console.log('posts-feed using querySelector fallback:', feedEl);
+    console.log('posts-feed using getElementById:', document.getElementById('posts-feed'));
+    console.log('All elements with id posts-feed:', document.querySelectorAll('#posts-feed'));
+    
+    const btn = el => el && el.addEventListener;
+    console.log('new-post-button:', $('new-post-button'));
+    btn($('new-post-button')) && $('new-post-button').addEventListener('click', openPostModal);
+    console.log('post-cancel:', $('post-cancel'));
+    btn($('post-cancel')) && $('post-cancel').addEventListener('click', closePostModal);
+    btn($('post-submit')) && $('post-submit').addEventListener('click', submitPost);
+    btn($('view-post-close')) && $('view-post-close').addEventListener('click', closeViewPostModal);
+    btn($('delete-confirm-btn')) && $('delete-confirm-btn').addEventListener('click', confirmDelete);
+    btn($('delete-cancel-btn')) && $('delete-cancel-btn').addEventListener('click', closeDeleteConfirmModal);
+    
+    const feed = document.querySelector('#posts-feed') || document.querySelector('.posts-feed');
+    console.log('Setting up feed listener, feed element:', feed);
+    if (feed) {
+        feed.addEventListener('click', e => {
+            console.log('Feed click event fired', e.target);
+            const btn = e.target.closest('button[data-index]');
+            console.log('Closest button with data-index:', btn);
+            if (!btn) return;
+            const idx = parseInt(btn.dataset.index);
+            console.log('Button clicked with index:', idx, 'Classes:', btn.className);
+            if (btn.classList.contains('view-post-btn')) viewPost(idx);
+            else if (btn.classList.contains('edit-post-btn')) editPost(idx);
+            else if (btn.classList.contains('delete-post-btn')) deletePost(idx);
+            else if (btn.classList.contains('like-btn')) likePost(idx);
+            else if (btn.classList.contains('dislike-btn')) dislikePost(idx);
         });
     }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closePostModal();
+    
+    ['post-modal', 'view-post-modal', 'delete-confirm-modal'].forEach(id => {
+        const m = $(id);
+        if (m) m.addEventListener('click', e => e.target.id === id && toggleModal(id, false));
+    });
+    
+    document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') {
+            closePostModal();
+            closeViewPostModal();
+            closeDeleteConfirmModal();
+        }
     });
 
-loadPosts();
+    loadPosts();
 });
 

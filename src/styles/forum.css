@@ -1,26 +1,44 @@
 /*------------------forum-controls------------------*/
 .forum-controls {
-
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 #filter-search-sort {
-
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
 }
 
 #search-posts-button {
-
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+    padding: 10px 15px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
 #search-posts-button:hover {
-
+    background-color: rgb(30, 30, 30);
 }
 
 #search-posts-button:active {
-
+    transform: scale(0.98);
 }
 
 #search-form {
-
+    display: flex;
+    gap: 10px;
+    align-items: center;
 }
 
 #search-form input {
@@ -34,15 +52,16 @@
 }
 
 #search-input {
-
+    min-width: 150px;
+    flex: 1;
+    max-width: 300px;
 }
 
 .sort-button {
     color: rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 14px;
     text-decoration: none;
-    padding: 5px;
-    margin-right: 5px;
+    padding: 8px 12px;
     background-color: rgb(0, 0, 0);
     text-align: center;
     border-style: solid;
@@ -51,25 +70,23 @@
     border-color: rgb(255, 255, 255);
     cursor: pointer;
     font-family: VCR_OSD;
-    min-width:fit-content;
-    width: 10vw;
-    margin: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .sort-button:hover {
-
+    background-color: rgb(30, 30, 30);
 }
 
 .sort-button:active {
-
+    transform: scale(0.98);
 }
 
 #new-post-button {
     color: rgb(255, 255, 255);
-    font-size: 18px;
+    font-size: 16px;
     text-decoration: none;
-    padding: 10px;
-    margin-right: 5px;
+    padding: 10px 20px;
     background-color: rgb(0, 0, 0);
     text-align: center;
     border-style: solid;
@@ -78,42 +95,306 @@
     border-color: rgb(255, 255, 255);
     cursor: pointer;
     font-family: VCR_OSD;
-    min-width:fit-content;
-    width: 10vw;
-    margin: 5px;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 #new-post-button:hover {
-
+    background-color: rgb(30, 30, 30);
 }
 
 #new-post-button:active {
-
+    transform: scale(0.98);
 }
 
 /*------------------post-creation------------------*/
 .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    overflow-y: auto;
+    padding: var(--header-height, 200px) 20px 20px 20px;
+    box-sizing: border-box;
+}
 
+.modal.show {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: rgb(20, 20, 20);
+    padding: 30px;
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    color: rgb(255, 255, 255);
+    font-family: VCR_OSD, monospace;
+    margin: auto;
 }
 
 #post-title {
-
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    box-sizing: border-box;
 }
 
 #post-body {
-
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    resize: vertical;
+    min-height: 150px;
+    box-sizing: border-box;
 }
 
 #post-submit {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+    padding: 10px 20px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+}
 
+#post-submit:hover {
+    background-color: rgb(30, 30, 30);
 }
 
 #post-cancel {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+    padding: 10px 20px;
+    font-family: VCR_OSD, monospace;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+}
 
+#post-cancel:hover {
+    background-color: rgb(30, 30, 30);
 }
 
 .posts-feed {
-
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin: 30px 0;
 }
 
+.post-card {
+    background-color: rgb(20, 20, 20);
+    border: 3px solid rgb(255, 255, 255);
+    border-radius: 8px;
+    padding: 20px;
+    color: rgb(255, 255, 255);
+    font-family: VCR_OSD, monospace;
+}
 
+.post-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.post-card p {
+    margin: 10px 0;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.post-date {
+    font-size: 12px;
+    color: rgb(200, 200, 200);
+    margin-bottom: 10px;
+}
+
+.post-edited {
+    font-size: 12px;
+    color: rgb(150, 150, 150);
+    font-style: italic;
+}
+
+.post-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.post-actions button {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    padding: 8px 12px;
+    font-family: VCR_OSD, monospace;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    flex: 1;
+    min-width: 80px;
+}
+
+.post-actions button:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+.reactions {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+.like-btn, .dislike-btn {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+    padding: 6px 12px;
+    font-family: VCR_OSD, monospace;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.like-btn:hover, .dislike-btn:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+/*------------------dark-mode------------------*/
+body.dark-mode .post-card {
+    background-color: rgb(20, 20, 20);
+    border: 3px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .post-card h3,
+body.dark-mode .post-card p {
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode .post-date,
+body.dark-mode .post-edited {
+    color: rgb(150, 150, 150);
+}
+
+body.dark-mode .post-actions button,
+body.dark-mode .like-btn,
+body.dark-mode .dislike-btn {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+body.dark-mode .post-actions button:hover,
+body.dark-mode .like-btn:hover,
+body.dark-mode .dislike-btn:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+body.dark-mode .modal-content {
+    background-color: rgb(20, 20, 20);
+    border: 3px solid rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+}
+
+body.dark-mode #post-title,
+body.dark-mode #post-body {
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+body.dark-mode #post-submit,
+body.dark-mode #post-cancel {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(255, 255, 255);
+}
+
+body.dark-mode #post-submit:hover,
+body.dark-mode #post-cancel:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+/*------------------mobile-responsivity------------------*/
+@media (max-width: 768px) {
+    .forum-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #filter-search-sort {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #new-post-button {
+        width: 100%;
+    }
+
+    #search-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    #search-input {
+        min-width: unset;
+        max-width: unset;
+    }
+
+    #search-posts-button {
+        width: 100%;
+    }
+
+    .sort-button {
+        flex: 1;
+        min-width: unset;
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .posts-feed {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-content {
+        width: 95%;
+        max-width: unset;
+        padding: 20px;
+    }
+
+    #post-title,
+    #post-body {
+        font-size: 16px;
+    }
+}

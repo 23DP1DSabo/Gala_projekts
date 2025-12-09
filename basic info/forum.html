@@ -11,35 +11,72 @@
     <link rel="icon" href="../src/images/favicon2.ico" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <h1>Forums</h1>
-    </header>
-
-    <main>
-<!-------------forum-controls------------->
-        <div class="forum-controls">
-            <button id="new-post-button">Pievienot</button>
-            <div id="filter-search-sort">
-                <form id="search-form">
-                <button id="search-posts-button">Meklēt</button>
-                <input type="text" id="search-input" placeholder="Nosaukums vai atslēgvārds">
-                </form>
-                <p>Kārtošnas metodes: </p>
-                <button class="sort-button" id="sort-by-A-Z">A-Z</button>
-                <button class="sort-button" id="sort-by-Z-A">Z-A</button>
-                <button class="sort-button" id="sort-by-newest">Newest</button>
-                <button class="sort-button" id="sort-by-oldest">Oldest</button>
+    <header id="header">
+        <div id="top-header">
+            <a onclick="latvianMode()" class="langauge-buttons">LV</a>
+            <a onclick="englishMode()" class="langauge-buttons">EN</a>
+            <a onclick="italianMode()" class="langauge-buttons">IT</a>
+            <div class="dropdown-top">
+                <a class="nav-button-top">Izskats</a>
+                <div class="dropdown-content-top">
+                    <a href='#' onclick="lightMode(); return false;" class="dropdowned-button-top">Gaišs</a>
+                    <a href='#' onclick="darkMode(); return false;" class="dropdowned-button-top">Tumšs</a>
+                </div>
             </div>
         </div>
+        <div id="bottom-header">
+            <h1>Forums</h1>
+            <div class="forum-controls">
+                <button id="new-post-button">Pievienot</button>
+                <div id="filter-search-sort">
+                    <form id="search-form">
+                    <button id="search-posts-button">Meklēt</button>
+                    <input type="text" id="search-input" placeholder="Nosaukums vai atslēgvārds">
+                    </form>
+                    <p>Kārtošnas metodes: </p>
+                    <button class="sort-button" id="sort-by-A-Z">A-Z</button>
+                    <button class="sort-button" id="sort-by-Z-A">Z-A</button>
+                    <button class="sort-button" id="sort-by-newest">Jaunākie</button>
+                    <button class="sort-button" id="sort-by-oldest">Vecākie</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main style="margin-top: var(--header-height, 200px);">
 <!-------------post-creation------------->
-        <div id="post-modal" class="modal" aria-hidden="true" style="display:none;">
+        <div id="post-modal" class="modal" aria-hidden="true">
             <div class="modal-content">
-                <h2>New Post</h2>
-                <input id="post-title" type="text" placeholder="Title" />
-                <textarea id="post-body" rows="8" placeholder="Write your post..."></textarea>
+                <h2>Jauns publicējums</h2>
+                <input id="post-title" type="text" placeholder="Nosaukums" />
+                <textarea id="post-body" rows="8" placeholder="Saturs..."></textarea>
                 <div class="modal-actions">
-                    <button id="post-submit">Post</button>
-                    <button id="post-cancel">Cancel</button>
+                    <button id="post-submit">Publicēt</button>
+                    <button id="post-cancel">Atcelt</button>
+                </div>
+            </div>
+        </div>
+
+<!-------------post-view-modal------------->
+        <div id="view-post-modal" class="modal" aria-hidden="true">
+            <div class="modal-content">
+                <h2 id="view-post-title"></h2>
+                <div id="view-post-body" class="post-body-view"></div>
+                <div id="view-post-meta" class="meta"></div>
+                <div class="modal-actions">
+                    <button id="view-post-close">Aizvērt</button>
+                </div>
+            </div>
+        </div>
+
+<!-------------delete-confirm-modal------------->
+        <div id="delete-confirm-modal" class="modal" aria-hidden="true">
+            <div class="modal-content">
+                <h2>Apstiprināt dzēšanu</h2>
+                <p>Esat pārliecināts ka vēlaties dzēst šo publicējumu?</p>
+                <div class="modal-actions">
+                    <button id="delete-confirm-btn">Dzēst</button>
+                    <button id="delete-cancel-btn">Atcelt</button>
                 </div>
             </div>
         </div>
@@ -47,18 +84,6 @@
 <!-------------forum-structure------------->
         <section id="posts-feed" class="posts-feed"></section>
     </main>
-
-    <style>
-        .modal { position:fixed; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.4); }
-        .modal[aria-hidden='true'] { display:none; }
-        .modal-content { background:#fff; padding:16px; border-radius:6px; width:90%; max-width:640px; box-shadow:0 6px 20px rgba(0,0,0,0.2);} 
-        .modal-content input, .modal-content textarea { width:100%; margin:8px 0; padding:8px; box-sizing:border-box; }
-        .modal-actions { display:flex; gap:8px; justify-content:flex-end; }
-        .posts-feed { display:flex; flex-direction:column; gap:12px; margin-top:16px; }
-        .post { border:1px solid #ccc; padding:12px; border-radius:6px; background:#fff; }
-        .post h3 { margin:0 0 8px 0; }
-        .post .meta { font-size:0.85rem; color:#666; margin-top:8px; }
-    </style>
 
     <script src="../src/script/index.js"></script>
 </body>
