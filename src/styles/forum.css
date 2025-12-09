@@ -7,8 +7,30 @@
 
 }
 
-#search-posts {
+#search-posts-button {
 
+}
+
+#search-posts-button:hover {
+
+}
+
+#search-posts-button:active {
+
+}
+
+#search-form {
+
+}
+
+#search-form input {
+    padding: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(30, 30, 30);
+    color: rgb(255, 255, 255);
+    font-family: VCR_OSD, monospace;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 #search-input {
@@ -16,13 +38,58 @@
 }
 
 .sort-button {
-    
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 5px;
+    margin-right: 5px;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 8px;
+    border-color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: VCR_OSD;
+    min-width:fit-content;
+    width: 10vw;
+    margin: 5px;
+}
+
+.sort-button:hover {
+
+}
+
+.sort-button:active {
+
 }
 
 #new-post-button {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 5px;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 8px;
+    border-color: rgb(255, 255, 255);
+    cursor: pointer;
+    font-family: VCR_OSD;
+    min-width:fit-content;
+    width: 10vw;
+    margin: 5px;
+}
+
+#new-post-button:hover {
 
 }
 
+#new-post-button:active {
+
+}
 
 /*------------------post-creation------------------*/
 .modal {
