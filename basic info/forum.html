@@ -35,11 +35,20 @@
                     <button id="search-posts-button" class="nav-button">Meklēt</button>
                     <input type="text" id="search-input" placeholder="Nosaukums vai atslēgvārds">
                     </form>
-                    <p>Kārtošnas metodes: </p>
-                    <button class="sort-button" id="sort-by-A-Z">A-Z</button>
-                    <button class="sort-button" id="sort-by-Z-A">Z-A</button>
-                    <button class="sort-button" id="sort-by-newest">Jaunākie</button>
-                    <button class="sort-button" id="sort-by-oldest">Vecākie</button>
+                    <p>Kārtošanas un filtrēšanas: </p>
+                    <div class="control-row">
+                        <button class="sort-button" id="sort-by-A-Z">A-Z</button>
+                        <button class="sort-button" id="sort-by-Z-A">Z-A</button>
+                        <button class="sort-button" id="sort-by-newest">Jaunākie</button>
+                        <button class="sort-button" id="sort-by-oldest">Vecākie</button>
+                    </div>
+                    <label for="filter-select" class="visually-hidden">Filtrs</label>
+                    <select id="filter-select" class="sort-button">
+                        <option value="all">Visi</option>
+                        <option value="edited">Rediģēti</option>
+                        <option value="popular">Populāri (≥1)</option>
+                        <option value="recent">Pēdējās 7 dienas</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -78,8 +87,8 @@
                 <h2>Apstiprināt dzēšanu</h2>
                 <p>Esat pārliecināts ka vēlaties dzēst šo publicējumu?</p>
                 <div class="modal-actions">
-                    <button id="delete-confirm-button" class="nav-button">Dzēst</button>
-                    <button id="delete-cancel-button" class="nav-button">Atcelt</button>
+                    <button id="delete-confirm-btn" class="nav-button">Dzēst</button>
+                    <button id="delete-cancel-btn" class="nav-button">Atcelt</button>
                 </div>
             </div>
         </div>

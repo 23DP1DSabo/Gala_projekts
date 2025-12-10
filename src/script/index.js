@@ -297,35 +297,22 @@ const dislikePost = idx => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('=== DOMContentLoaded ===');
-    console.log('Current page URL:', window.location.pathname);
-    console.log('$ function:', typeof $);
+    // Initialize forum controls
     const feedEl = document.querySelector('#posts-feed') || document.querySelector('.posts-feed');
-    console.log('posts-feed using $ function:', $('#posts-feed'));
-    console.log('posts-feed using querySelector fallback:', feedEl);
-    console.log('posts-feed using getElementById:', document.getElementById('posts-feed'));
-    console.log('All elements with id posts-feed:', document.querySelectorAll('#posts-feed'));
-    
     const button = el => el && el.addEventListener;
-    console.log('new-post-button:', $('new-post-button'));
     button($('new-post-button')) && $('new-post-button').addEventListener('click', openPostModal);
-    console.log('post-cancel:', $('post-cancel'));
     button($('post-cancel')) && $('post-cancel').addEventListener('click', closePostModal);
     button($('post-submit')) && $('post-submit').addEventListener('click', submitPost);
     button($('view-post-close')) && $('view-post-close').addEventListener('click', closeViewPostModal);
-    button($('delete-confirm-button')) && $('delete-confirm-button').addEventListener('click', confirmDelete);
-    button($('delete-cancel-button')) && $('delete-cancel-button').addEventListener('click', closeDeleteConfirmModal);
+    button($('delete-confirm-btn')) && $('delete-confirm-btn').addEventListener('click', confirmDelete);
+    button($('delete-cancel-btn')) && $('delete-cancel-btn').addEventListener('click', closeDeleteConfirmModal);
     
-    const feed = document.querySelector('#posts-feed') || document.querySelector('.posts-feed');
-    console.log('Setting up feed listener, feed element:', feed);
+    const feed = feedEl;
     if (feed) {
         feed.addEventListener('click', e => {
-            console.log('Feed click event fired', e.target);
             const button = e.target.closest('button[data-index]');
-            console.log('Closest button with data-index:', button);
             if (!button) return;
             const idx = parseInt(button.dataset.index);
-            console.log('Button clicked with index:', idx, 'Classes:', button.className);
             if (button.classList.contains('view-post-button')) viewPost(idx);
             else if (button.classList.contains('edit-post-button')) editPost(idx);
             else if (button.classList.contains('delete-post-button')) deletePost(idx);
@@ -347,6 +334,87 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    loadPosts();
+        // Search form
+        const searchForm = document.getElementById('search-form');
+        if (searchForm) {
+            searchForm.addEventListener('submit', e => { e.preventDefault(); searchPosts(); });
+        }
+        document.getElementById('search-posts-button')?.addEventListener('click', e => { e.preventDefault(); searchPosts(); });
+
+        // Sort buttons
+        ['sort-by-A-Z','sort-by-Z-A','sort-by-newest','sort-by-oldest'].forEach(id => {
+            const b = document.getElementById(id);
+            if (!b) return;
+            b.addEventListener('click', () => {
+                const map = {
+                    'sort-by-A-Z': 'A-Z',
+                    'sort-by-Z-A': 'Z-A',
+                    'sort-by-newest': 'newest',
+                    'sort-by-oldest': 'oldest'
+                };
+                sortPosts(map[id]);
+            });
+        });
+
+        // Filter select
+        const filterSelect = document.getElementById('filter-select');
+        if (filterSelect) {
+            filterSelect.addEventListener('change', e => {
+                const v = e.target.value;
+                if (v === 'all') filterPosts();
+                else if (v === 'edited') filterPosts(p => p.edited);
+                else if (v === 'popular') filterPosts(p => (p.likes || 0) >= 1);
+                else if (v === 'recent') filterPosts(p => (Date.now() - (p.created || 0)) <= 7 * 24 * 60 * 60 * 1000);
+            });
+        }
+
+        loadPosts();
 });
 
+function sortPosts() {
+    const mode = arguments[0] || 'A-Z';
+    const posts = getPosts().slice();
+    switch (mode) {
+        case 'A-Z':
+            posts.sort((a, b) => (a.title || '').localeCompare(b.title || '', undefined, {sensitivity: 'base'}));
+            break;
+        case 'Z-A':
+            posts.sort((a, b) => (b.title || '').localeCompare(a.title || '', undefined, {sensitivity: 'base'}));
+            break;
+        case 'newest':
+            posts.sort((a, b) => (b.created || 0) - (a.created || 0));
+            break;
+        case 'oldest':
+            posts.sort((a, b) => (a.created || 0) - (b.created || 0));
+            break;
+        default:
+            break;
+    }
+    renderPosts(posts);
+}
+
+function filterPosts() {
+    // Accepts a predicate function: filterPosts(fn) or resets when called without args
+    const arg = arguments[0];
+    const posts = getPosts();
+    if (typeof arg === 'function') {
+        renderPosts(posts.filter(arg));
+    } else {
+        renderPosts(posts);
+    }
+}
+
+function searchPosts() {
+    const q = document.getElementById('search-input')?.value || '';
+    const term = q.trim().toLowerCase();
+    if (!term) {
+        renderPosts(getPosts());
+        return;
+    }
+    const results = getPosts().filter(p => {
+        const t = (p.title || '').toLowerCase();
+        const b = (p.body || '').toLowerCase();
+        return t.includes(term) || b.includes(term);
+    });
+    renderPosts(results);
+}
