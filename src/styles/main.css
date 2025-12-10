@@ -207,7 +207,7 @@ html, body {
     background-color: #525252;
 }
 
-.dropbtn:hover {
+.dropbutton:hover {
     background-color: #ffffff;
     outline: 1px solid #fff;
     border-color: #fff;

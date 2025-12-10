@@ -11,6 +11,8 @@
     <link rel="icon" href="../src/images/favicon2.ico" type="image/x-icon">
 </head>
 <body>
+
+<!-------------header------------->  
     <header id="header">
         <div id="top-header">
             <a onclick="latvianMode()" class="langauge-buttons">LV</a>
@@ -30,7 +32,7 @@
                 <button id="new-post-button">Pievienot</button>
                 <div id="filter-search-sort">
                     <form id="search-form">
-                    <button id="search-posts-button">Meklēt</button>
+                    <button id="search-posts-button" class="nav-button">Meklēt</button>
                     <input type="text" id="search-input" placeholder="Nosaukums vai atslēgvārds">
                     </form>
                     <p>Kārtošnas metodes: </p>
@@ -44,6 +46,7 @@
     </header>
 
     <main style="margin-top: var(--header-height, 200px);">
+
 <!-------------post-creation------------->
         <div id="post-modal" class="modal" aria-hidden="true">
             <div class="modal-content">
@@ -51,32 +54,32 @@
                 <input id="post-title" type="text" placeholder="Nosaukums" />
                 <textarea id="post-body" rows="8" placeholder="Saturs..."></textarea>
                 <div class="modal-actions">
-                    <button id="post-submit">Publicēt</button>
-                    <button id="post-cancel">Atcelt</button>
+                    <button id="post-submit" class="nav-button">Publicēt</button>
+                    <button id="post-cancel" class="nav-button">Atcelt</button>
                 </div>
             </div>
         </div>
 
-<!-------------post-view-modal------------->
+<!-------------post-view-window------------->
         <div id="view-post-modal" class="modal" aria-hidden="true">
             <div class="modal-content">
                 <h2 id="view-post-title"></h2>
                 <div id="view-post-body" class="post-body-view"></div>
                 <div id="view-post-meta" class="meta"></div>
                 <div class="modal-actions">
-                    <button id="view-post-close">Aizvērt</button>
+                    <button id="view-post-close" class="nav-button">Aizvērt</button>
                 </div>
             </div>
         </div>
 
-<!-------------delete-confirm-modal------------->
+<!-------------delete-confirm-window------------->
         <div id="delete-confirm-modal" class="modal" aria-hidden="true">
             <div class="modal-content">
                 <h2>Apstiprināt dzēšanu</h2>
                 <p>Esat pārliecināts ka vēlaties dzēst šo publicējumu?</p>
                 <div class="modal-actions">
-                    <button id="delete-confirm-btn">Dzēst</button>
-                    <button id="delete-cancel-btn">Atcelt</button>
+                    <button id="delete-confirm-button" class="nav-button">Dzēst</button>
+                    <button id="delete-cancel-button" class="nav-button">Atcelt</button>
                 </div>
             </div>
         </div>

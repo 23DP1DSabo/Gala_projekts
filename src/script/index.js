@@ -214,13 +214,13 @@ function renderPosts(posts) {
             <div class="post-date">${time}${editedLabel ? ' ' + editedLabel : ''}</div>
             <p>${body}</p>
             <div class="reactions">
-                <button class="like-btn" data-index="${idx}">👍 ${likes}</button>
-                <button class="dislike-btn" data-index="${idx}">👎 ${dislikes}</button>
+                <button class="like-button" data-index="${idx}">👍 ${likes}</button>
+                <button class="dislike-button" data-index="${idx}">👎 ${dislikes}</button>
             </div>
             <div class="post-actions">
-                <button class="view-post-btn" data-index="${idx}">Apskatīt</button>
-                <button class="edit-post-btn" data-index="${idx}">Rediģēt</button>
-                <button class="delete-post-btn" data-index="${idx}">Dzēst</button>
+                <button class="view-post-button" data-index="${idx}">Apskatīt</button>
+                <button class="edit-post-button" data-index="${idx}">Rediģēt</button>
+                <button class="delete-post-button" data-index="${idx}">Dzēst</button>
             </div>
         </article>`;
     }).join('\n');
@@ -306,31 +306,31 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log('posts-feed using getElementById:', document.getElementById('posts-feed'));
     console.log('All elements with id posts-feed:', document.querySelectorAll('#posts-feed'));
     
-    const btn = el => el && el.addEventListener;
+    const button = el => el && el.addEventListener;
     console.log('new-post-button:', $('new-post-button'));
-    btn($('new-post-button')) && $('new-post-button').addEventListener('click', openPostModal);
+    button($('new-post-button')) && $('new-post-button').addEventListener('click', openPostModal);
     console.log('post-cancel:', $('post-cancel'));
-    btn($('post-cancel')) && $('post-cancel').addEventListener('click', closePostModal);
-    btn($('post-submit')) && $('post-submit').addEventListener('click', submitPost);
-    btn($('view-post-close')) && $('view-post-close').addEventListener('click', closeViewPostModal);
-    btn($('delete-confirm-btn')) && $('delete-confirm-btn').addEventListener('click', confirmDelete);
-    btn($('delete-cancel-btn')) && $('delete-cancel-btn').addEventListener('click', closeDeleteConfirmModal);
+    button($('post-cancel')) && $('post-cancel').addEventListener('click', closePostModal);
+    button($('post-submit')) && $('post-submit').addEventListener('click', submitPost);
+    button($('view-post-close')) && $('view-post-close').addEventListener('click', closeViewPostModal);
+    button($('delete-confirm-button')) && $('delete-confirm-button').addEventListener('click', confirmDelete);
+    button($('delete-cancel-button')) && $('delete-cancel-button').addEventListener('click', closeDeleteConfirmModal);
     
     const feed = document.querySelector('#posts-feed') || document.querySelector('.posts-feed');
     console.log('Setting up feed listener, feed element:', feed);
     if (feed) {
         feed.addEventListener('click', e => {
             console.log('Feed click event fired', e.target);
-            const btn = e.target.closest('button[data-index]');
-            console.log('Closest button with data-index:', btn);
-            if (!btn) return;
-            const idx = parseInt(btn.dataset.index);
-            console.log('Button clicked with index:', idx, 'Classes:', btn.className);
-            if (btn.classList.contains('view-post-btn')) viewPost(idx);
-            else if (btn.classList.contains('edit-post-btn')) editPost(idx);
-            else if (btn.classList.contains('delete-post-btn')) deletePost(idx);
-            else if (btn.classList.contains('like-btn')) likePost(idx);
-            else if (btn.classList.contains('dislike-btn')) dislikePost(idx);
+            const button = e.target.closest('button[data-index]');
+            console.log('Closest button with data-index:', button);
+            if (!button) return;
+            const idx = parseInt(button.dataset.index);
+            console.log('Button clicked with index:', idx, 'Classes:', button.className);
+            if (button.classList.contains('view-post-button')) viewPost(idx);
+            else if (button.classList.contains('edit-post-button')) editPost(idx);
+            else if (button.classList.contains('delete-post-button')) deletePost(idx);
+            else if (button.classList.contains('like-button')) likePost(idx);
+            else if (button.classList.contains('dislike-button')) dislikePost(idx);
         });
     }
     

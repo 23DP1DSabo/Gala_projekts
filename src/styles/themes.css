@@ -209,16 +209,16 @@ body.light-mode .post-edited {
 }
 
 body.light-mode .post-actions button,
-body.light-mode .like-btn,
-body.light-mode .dislike-btn {
+body.light-mode .like-button,
+body.light-mode .dislike-button {
     background-color: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border: 2px solid rgb(0, 0, 0);
 }
 
 body.light-mode .post-actions button:hover,
-body.light-mode .like-btn:hover,
-body.light-mode .dislike-btn:hover {
+body.light-mode .like-button:hover,
+body.light-mode .dislike-button:hover {
     background-color: rgb(230, 230, 230);
 }
 
