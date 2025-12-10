@@ -232,7 +232,8 @@ section p {
 }
 
 .regular-section {
-    min-height: 85vh;
+    height: 85vh;
+    max-height: auto;
     margin: 0px 20px 10px 20px;
     flex-direction: column;
     display: flex;
@@ -317,6 +318,8 @@ section p {
     border-radius: 8px;
     border-color: rgb(255, 255, 255);
     box-sizing: border-box;
+    min-height: 20%;
+    max-height: 60%;
 }
 
 .card:hover {
@@ -365,6 +368,9 @@ section p {
     color: black;
 }
 
+.card-image {
+    max-width: 100%;
+}
 
 /*------------------footer-section------------------*/
 #footer-section {
