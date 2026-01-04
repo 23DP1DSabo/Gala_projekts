@@ -1,21 +1,73 @@
-@media (max-width: 800px) {
+/* Simplified mobile-first responsive rules */
 
-    #navigation {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-    };
-
-    #logo {
-        max-height: 15vh;
-        height: auto;
-        margin-left: 10px;
-    };
-
-    .regular-section p, li {
-        font-size: 12px;
-    };
-
-    .regular-section h1 {
-        padding-top: 70px;
-        margin-top: -70px;
-    }
+/* Fluid typography */
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
 }
+
+p, li {
+    font-size: clamp(0.9rem, 2.2vw, 1.125rem);
+}
+
+/* Navigation: stacked on small, horizontal on larger screens */
+#navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: stretch;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+#logo {
+    max-height: 8vh;
+    height: auto;
+    margin-left: 8px;
+}
+
+.regular-section h1 {
+    padding-top: calc(var(--header-height, 80px) / 1.5);
+    margin-top: 0;
+}
+
+/* Cards and grids become responsive via auto-fit */
+#cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--gap);
+}
+
+#aside-section {
+    width: 100%;
+    min-height: auto;
+    order: 2;
+    float: none;
+}
+
+/* Medium screens (tablets) */
+@media (min-width: 600px) {
+    #navigation {
+        flex-direction: row;
+        justify-content: flex-end;
+        align-items: center;
+    }
+
+    #logo { max-height: 10vh; }
+
+    .regular-section { padding: 1.5rem; }
+
+    #aside-section { width: 25vw; order: 0; }
+}
+
+/* Large screens (desktops) */
+@media (min-width: 900px) {
+    .regular-section { max-width: var(--max-width); margin-left: auto; margin-right: auto; }
+    #aside-section { width: 20vw; }
+    #header { position: fixed; top: 0; left: 0; right: 0; }
+}
+
+/* Small adjustments to avoid overflow */
+img, .card-image { max-width: 100%; height: auto; }
+
+/* Utility: center content container */
+.container { max-width: var(--max-width); margin-left: auto; margin-right: auto; padding: 0 1rem; }
